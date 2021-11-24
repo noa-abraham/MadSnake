@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Panel extends JPanel {
@@ -30,10 +31,11 @@ public class Panel extends JPanel {
     }
     
     public void dibujar(Graphics graphics) {
-        graphics.setColor(Color.blue);
-        graphics.fillRect(90, 120, 200,300);
+        graphics.setColor(Color.RED);
+        graphics.fillRect(380, 170, 80,80);
         graphics.setFont(new Font("Arial", 8, 20));
-        graphics.drawString("Hola manola", 100, 100);
+        graphics.drawString("Hola Cris!", 10,10);
+        
 
     }
 
