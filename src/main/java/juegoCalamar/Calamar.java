@@ -14,7 +14,7 @@ public class Calamar extends ElementoBasico  {
 	
 	public Calamar(int posicionX, int posicionY, int velocidadX, int velocidadY, int ancho, int largo, Color color) {
         super(posicionX, posicionY, velocidadX, velocidadY, ancho, largo, color);
-        String path = Paths.get(Calamar.class.getClassLoader().getResource("JuegoCalamar.imagenes/calamarimagen.png").getPath())
+        String path = Paths.get(Calamar.class.getClassLoader().getResource("imagenes/calamarimagen.png").getPath())
                 .toString();
         try {
             this.img = ImageIO.read(new File(path));
