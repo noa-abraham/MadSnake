@@ -1,4 +1,4 @@
-package juegoCalamar;
+package juegoVivorita;
 
 import java.awt.Color;
 
