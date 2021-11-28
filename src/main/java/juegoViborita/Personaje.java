@@ -10,6 +10,6 @@ public interface Personaje extends Dibujable {
 	
 	public int getVelocidadY(); 
 	
-	public int detectarColision (Personaje personaje); 
+	public boolean detectarColision (Personaje personaje); 
 
 }

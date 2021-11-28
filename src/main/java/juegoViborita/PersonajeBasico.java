@@ -22,7 +22,6 @@ public abstract class PersonajeBasico implements Personaje {
 	//completar el método más adelante
 
 
-
 	public int getPosicionX() {
 		return posicionX;
 	}
