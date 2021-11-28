@@ -1,8 +1,8 @@
-package juegoVivorita;
+package juegoViborita;
 
 import java.awt.Color;
 
-public abstract class ElementoBasico implements Elemento {
+public abstract class Elemento {
 	
 	private double posicionX;
     private double posicionY;

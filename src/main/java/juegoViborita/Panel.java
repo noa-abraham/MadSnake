@@ -1,4 +1,4 @@
-package juegoVivorita;
+package juegoViborita;
 
 public class Panel {
 
