@@ -1,5 +1,5 @@
 package juegoViborita;
 
-public class Panel {
+public class Juego {
 
 }
