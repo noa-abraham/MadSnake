@@ -7,6 +7,7 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
+
 public class Fondo extends ElementoBasico {
 	
 	private Image imagen; 
@@ -17,10 +18,9 @@ public class Fondo extends ElementoBasico {
 		
 	}
 
-
 	@Override
 	public void dibujarse(Graphics graphics) {
-		File miImagen = new File ("src/main/resources/imagenes/fondo.png"); 
+		File miImagen = new File ("resources/imagenes/fondo.png"); 
 		try {
 			imagen = ImageIO.read(miImagen); 
 		} catch (Exception e1) {

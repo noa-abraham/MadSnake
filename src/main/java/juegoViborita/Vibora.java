@@ -25,7 +25,7 @@ public class Vibora extends ElementoBasico {
 
 	@Override
 	public void dibujarse(Graphics graphics) {
-		File miImagen = new File ("src/main/resource/imagenes/cabezaVibora.gif"); 
+		File miImagen = new File ("resource/imagenes/cabezaVibora.gif"); 
 		try {
 			imagen = ImageIO.read(miImagen); 
 		} catch (Exception e1) {
