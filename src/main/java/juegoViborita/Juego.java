@@ -17,17 +17,17 @@ public class Juego extends JPanel implements KeyListener, Runnable {
     private int tiempoDeEsperaEntreActualizaciones;
     private ElementoBasico fondo; 
     private ElementoBasico vibora;
+    private ElementoBasico hongos; 
 
     
     public Juego (int anchoJuego, int largoJuego) {
 		this.anchoJuego = anchoJuego; 
 		this.largoJuego = largoJuego;
 		this.fondo = crearFondo(); 
-		this.vibora = crearVibora ();
+		this.vibora = crearVibora();
+		this.hongos = crearHongos(); 
 		
 	}
-    
- 
     
     @Override
 	public Dimension getPreferredSize() {
@@ -90,6 +90,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
     protected void paintComponent(Graphics g) {
 		fondo.dibujarse(g);
 		vibora.dibujarse(g);
+		hongos.dibujarse(g);
 	}
 	
 	 private void actualizarJuego() {
@@ -108,6 +109,10 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    
 	  private ElementoBasico crearVibora() {
 	       return new Vibora(80,80, 0, 0, 40, 40, Color.CYAN);
+	  }
+	  
+	  private ElementoBasico crearHongos () {
+		  return new Hongos(280,580, 0, 0, 40, 40, Color.green);
 	  }
 	  
 	// metodo para esperar una cantidad de milisegundos
