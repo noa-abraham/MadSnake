@@ -40,7 +40,6 @@ public class Fondo extends ElementoBasico {
 		
 	}
 
-
 	@Override
 	public boolean hayColision(ElementoBasico elemento) {
 		// TODO Auto-generated method stub
