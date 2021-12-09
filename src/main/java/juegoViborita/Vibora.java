@@ -27,11 +27,6 @@ public class Vibora extends ElementoBasico {
 		}
 	}
 
-	@Override
-	public boolean hayColision(ElementoBasico elemento) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public void dibujarse(Graphics graphics) {

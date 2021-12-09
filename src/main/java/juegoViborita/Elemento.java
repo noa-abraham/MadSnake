@@ -23,6 +23,5 @@ public interface Elemento {
 
 	public void moverse();
 
-	public boolean hayColision(ElementoBasico elemento);
 
 }
