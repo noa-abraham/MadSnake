@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Random;
 
 import javax.swing.JPanel;
 
@@ -44,7 +45,6 @@ public class Juego extends JPanel implements KeyListener, Runnable {
        
    	}
 
-	
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
@@ -79,14 +79,11 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+	
 		
 	}
 	
 	@Override
-    // Este metodo se llama cuando se hace un this.repaint() automaticamente
-    // Aca se dibujan a todos los elementos, para ello cada elemento implementa el
-    // metodo dibujarse
     protected void paintComponent(Graphics g) {
 		fondo.dibujarse(g);
 		vibora.dibujarse(g);
@@ -97,6 +94,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	     vibora.moverse();
 	      
 	    }
+	 
+	 
 	 
 	 private void dibujarJuego() {
 	        this.repaint();
@@ -123,6 +122,5 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	            throw new RuntimeException(e1);
 	        }
 	    }
-	 
 
 }
