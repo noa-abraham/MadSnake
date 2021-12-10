@@ -45,13 +45,7 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
 		inicio.add(button);
 		ventana.add(inicio);
 		ventana.pack();
-        
-        JuegoMadSnake juegoMadSnake = new JuegoMadSnake (anchoVentana, largoVentana); 
-        ventana.add(juegoMadSnake); 
-        inicio.setVisible(false);
-        juegoMadSnake.setVisible(true);
-        ventana.addKeyListener(juegoMadSnake);
-        ventana.pack();
+
         
         Thread thread = new Thread(juegoMadSnake);
         thread.start();

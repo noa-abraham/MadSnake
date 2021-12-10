@@ -16,14 +16,14 @@ public class Inicio extends JPanel implements KeyListener, Runnable {
     private static final long serialVersionUID = 1L;
     private int anchoJuego;
     private int largoJuego;
-    private ElementoBasico portada; 
+    private Pantalla portada; 
    
 
     
     public Inicio (int anchoJuego, int largoJuego) {
 		this.anchoJuego = anchoJuego; 
 		this.largoJuego = largoJuego;
-		this.portada = new Portada (0, 0, 0, 0, 905, 700, null); 
+		this.portada = new Portada (905, 700, getName()); 
 		
 	}
     

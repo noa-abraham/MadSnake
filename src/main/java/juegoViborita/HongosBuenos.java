@@ -14,9 +14,9 @@ public class HongosBuenos extends Alimento {
 	
 	private BufferedImage img;
 	
-	public HongosBuenos(int[] hongosPosicionX, int[] hongosPosicionY, int ancho, int largo) {
-		super(hongosPosicionX, hongosPosicionY, ancho, largo);
 	
+	public HongosBuenos(int posicionX, int posicionY, int ancho, int largo, Color color, int[] hongosPosicionX, int[] hongosPosicionY) {
+		super(posicionX, posicionY, ancho, largo, color, hongosPosicionX, hongosPosicionY);
 		try {
 			String path = Paths.get(HongosBuenos.class.getClassLoader().getResource("imagenes/hongoVioleta.gif").toURI()).toString();
 			this.img = ImageIO.read(new File(path));
@@ -31,7 +31,7 @@ public class HongosBuenos extends Alimento {
 	@Override
 	public void dibujarse(Graphics graphics) {
 		try {
-			graphics.drawImage(img, getHongoPosicionX(), getHongoPosicionY(), this.getAncho(), this.getLargo(), null);
+			graphics.drawImage(img, this.getAncho(), this.getLargo(), null);
 		} catch (Exception e1) {
 			throw new RuntimeException(e1);
 		}

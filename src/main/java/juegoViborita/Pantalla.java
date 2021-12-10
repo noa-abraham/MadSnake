@@ -1,6 +1,6 @@
 package juegoViborita;
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -18,7 +18,7 @@ public class Pantalla implements Dibujable {
 	protected int ancho;
     protected int largo;
 	
-    public Pantalla (int ancho, int largo) {
+    public Pantalla (int ancho, int largo, String resource) {
 		try {
 			String path = Paths.get(Pantalla.class.getClassLoader().getResource("imagenes/portada.png").toURI()).toString();
 			this.img = ImageIO.read(new File(path));

@@ -10,14 +10,15 @@ import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
-public class Vibora {
+public class Vibora extends ElementoBasico {
 	
 	private BufferedImage img;
 	private int[] ViboritaPosicionX=new int[750];
 	private int[] ViboritaPosicionY=new int[750];
 	private int moverse=0;
 
-	public Vibora(int posicionX, int posicionY, int ancho, int largo ) {
+	public Vibora(int posicionX, int posicionY, int ancho, int largo, Color color ) {
+		super(posicionX, posicionY, ancho, largo, color); 
 		
 		try {
 			String path = Paths.get(Vibora.class.getClassLoader().getResource("imagenes/cabezaVibora.gif").toURI()).toString();
