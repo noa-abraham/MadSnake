@@ -10,14 +10,15 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-public class Inicializador extends JComponent implements KeyListener, Runnable {
+public class Inicializador  {
 	
-	private static final long serialVersionUID = 1L;
+	
 	public static void main(String[] args) {
 
        
         int anchoVentana = 905;
         int largoVentana = 700;
+        int tiempoDeEsperaEntreActualizaciones = 5;
        
         
      // Activar aceleracion de graficos en 2 dimensiones
@@ -35,42 +36,20 @@ public class Inicializador extends JComponent implements KeyListener, Runnable {
         // Mostrar la ventana
         ventana.setVisible(true);
         
-        Inicio inicio = new Inicio (anchoVentana, largoVentana); 
+        JuegoMadSnake juegoMadSnake  = new JuegoMadSnake (anchoVentana, largoVentana, tiempoDeEsperaEntreActualizaciones); 
         
         JButton button = new JButton();
 		button.setText("START");	         
 		button.setForeground(Color.magenta);
 		button.setToolTipText("PRESS BUTTON TO START");
 		button.setBackground(Color.green);
-		inicio.add(button);
-		ventana.add(inicio);
+		juegoMadSnake.add(button);
+		ventana.add(juegoMadSnake);
 		ventana.pack();
 
         
         Thread thread = new Thread(juegoMadSnake);
         thread.start();
     }
-	
-	
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
