@@ -1,12 +1,10 @@
 package juegoViborita;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
 
 
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -18,7 +16,7 @@ public class Inicializador  {
        
         int anchoVentana = 905;
         int largoVentana = 700;
-        int tiempoDeEsperaEntreActualizaciones = 5;
+     
        
         
      // Activar aceleracion de graficos en 2 dimensiones
@@ -36,16 +34,16 @@ public class Inicializador  {
         // Mostrar la ventana
         ventana.setVisible(true);
         
-        JuegoMadSnake juegoMadSnake  = new JuegoMadSnake (anchoVentana, largoVentana, tiempoDeEsperaEntreActualizaciones); 
+        JuegoMadSnake juegoMadSnake = new JuegoMadSnake (anchoVentana, largoVentana); 
         
-        JButton button = new JButton();
-		button.setText("START");	         
-		button.setForeground(Color.magenta);
-		button.setToolTipText("PRESS BUTTON TO START");
-		button.setBackground(Color.green);
-		juegoMadSnake.add(button);
+     
 		ventana.add(juegoMadSnake);
-		ventana.pack();
+		// Enviar los eventos recibidos de movimientos del teclado al juego (esto es
+        // porque la clase Juego implementa: MouseMotionListener)
+        ventana.addKeyListener(juegoMadSnake);
+
+        // Achicar la ventana lo maximo posible para que entren los componentes
+        ventana.pack();
 
         
         Thread thread = new Thread(juegoMadSnake);

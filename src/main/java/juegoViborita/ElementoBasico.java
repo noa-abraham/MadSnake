@@ -1,12 +1,12 @@
 package juegoViborita;
 
 import java.awt.Color;
-import java.awt.Graphics;
+
 
 public abstract class ElementoBasico implements Elemento {
 	
-	private double posicionX;
-	private double posicionY;
+	private int posicionX;
+	private int posicionY;
 	private int ancho;
 	private int largo;
 	private Color color;
@@ -19,13 +19,13 @@ public abstract class ElementoBasico implements Elemento {
 		this.color = color;
 	}
 	
-	
-	public int getPosicionX() {
-		return (int) posicionX;
-	}
 
 	public int getPosicionY() {
-		return (int) posicionY;
+		return  posicionY;
+	}
+	
+	public int getPosicionX() {
+		return posicionX;  
 	}
 
 	public void setPosicionX(int posicionX) {
