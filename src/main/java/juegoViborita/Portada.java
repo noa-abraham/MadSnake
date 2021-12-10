@@ -14,8 +14,8 @@ public class Portada extends ElementoBasico {
 	
 	private BufferedImage img;
 	
-	public Portada(int posicionX, int posicionY, double velocidadX, double velocidadY, int ancho, int largo, Color color) {
-		super(posicionX, posicionY, velocidadX, velocidadY, ancho, largo, color);
+	public Portada(int posicionX, int posicionY, int ancho, int largo, Color color) {
+		super(posicionX, posicionY, ancho, largo, color);
 		try {
 			String path = Paths.get(Portada.class.getClassLoader().getResource("imagenes/portada.png").toURI()).toString();
 			this.img = ImageIO.read(new File(path));

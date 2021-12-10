@@ -10,17 +10,14 @@ import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
-public class Vibora {
-	
-	private BufferedImage img;
-	private int[] ViboritaPosicionX=new int[750];
-	private int[] ViboritaPosicionY=new int[750];
-	private int moverse=0;
+public class HongosMalos extends Alimento {
 
-	public Vibora(int posicionX, int posicionY, int ancho, int largo ) {
-		
+	private BufferedImage img;
+
+	public HongosMalos(int[] hongosPosicionX, int[] hongosPosicionY, int ancho, int largo) {
+		super(hongosPosicionX, hongosPosicionY, ancho, largo);
 		try {
-			String path = Paths.get(Vibora.class.getClassLoader().getResource("imagenes/cabezaVibora.gif").toURI()).toString();
+			String path = Paths.get(HongosBuenos.class.getClassLoader().getResource("imagenes/hongoVioleta.gif").toURI()).toString();
 			this.img = ImageIO.read(new File(path));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -29,16 +26,19 @@ public class Vibora {
 		}
 	}
 
+	@Override
+	public void serComido(Graphics graphics) {
+		
+    }
+		
 
 	@Override
 	public void dibujarse(Graphics graphics) {
 		try {
-			graphics.drawImage(img, getPosicionX(), getPosicionY(), this.getAncho(), this.getLargo(), null);
+			graphics.drawImage(img, getHongoPosicionX(), getHongoPosicionY(), null);
 		} catch (Exception e1) {
 			throw new RuntimeException(e1);
 		}
-		
 	}
-				
-}
 
+}

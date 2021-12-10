@@ -76,7 +76,7 @@ public class JuegoMadSnake extends JComponent implements KeyListener, Runnable {
 	  }
 	  
 	  private ElementoBasico crearHongos () {
-		  return new Hongos(280,580, 0, 0, 40, 40, Color.green);
+		  return new HongosBuenos(280,580, 0, 0, 40, 40, Color.green);
 	  }
 	  
 

@@ -10,15 +10,15 @@ import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import javax.imageio.ImageIO;
 
-public class Hongos extends ElementoBasico {
+public class HongosBuenos extends Alimento {
 	
 	private BufferedImage img;
-
-	public Hongos(int posicionX, int posicionY, double velocidadX, double velocidadY, int ancho, int largo,
-			Color color) {
-		super(posicionX, posicionY, velocidadX, velocidadY, ancho, largo, color);
+	
+	public HongosBuenos(int[] hongosPosicionX, int[] hongosPosicionY, int ancho, int largo) {
+		super(hongosPosicionX, hongosPosicionY, ancho, largo);
+	
 		try {
-			String path = Paths.get(Hongos.class.getClassLoader().getResource("imagenes/hongoVioleta.gif").toURI()).toString();
+			String path = Paths.get(HongosBuenos.class.getClassLoader().getResource("imagenes/hongoVioleta.gif").toURI()).toString();
 			this.img = ImageIO.read(new File(path));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -27,18 +27,20 @@ public class Hongos extends ElementoBasico {
 		}
 
 	}
-	
-		
-
 
 	@Override
 	public void dibujarse(Graphics graphics) {
 		try {
-			graphics.drawImage(img, getPosicionX(), getPosicionY(), null);
+			graphics.drawImage(img, getHongoPosicionX(), getHongoPosicionY(), this.getAncho(), this.getLargo(), null);
 		} catch (Exception e1) {
 			throw new RuntimeException(e1);
 		}
 		
 	}
+
+	@Override
+	public void serComido(Graphics graphics) {
+		
+    }
 		
 }

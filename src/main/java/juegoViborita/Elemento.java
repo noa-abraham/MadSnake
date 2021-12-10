@@ -13,15 +13,8 @@ public interface Elemento {
 
 	public int getLargo();
 
-	public double getVelocidadX();
-
-	public double getVelocidadY();
-
 	public Color getColor();
 
 	public void dibujarse(Graphics graphics);
-
-	public void moverse();
-
 
 }

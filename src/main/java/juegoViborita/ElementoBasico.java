@@ -7,55 +7,19 @@ public abstract class ElementoBasico implements Elemento {
 	
 	private double posicionX;
 	private double posicionY;
-	private double velocidadX;
-	private double velocidadY;
 	private int ancho;
 	private int largo;
 	private Color color;
 	
-	public ElementoBasico (int posicionX, int posicionY, double velocidadX, double velocidadY, int ancho, int largo, Color color) {
+	public ElementoBasico (int posicionX, int posicionY, int ancho, int largo, Color color) {
 		this.posicionX = posicionX;
-		this.posicionY = posicionY;
-		this.velocidadX = velocidadX;
-		this.velocidadY = velocidadY;
+		this.posicionY = posicionY; 
 		this.ancho = ancho;
 		this.largo = largo;
 		this.color = color;
 	}
 	
-	public abstract void dibujarse(Graphics graphics);
 	
-	public boolean hayColision(Elemento elemento) {
-		if (this.getPosicionX() < elemento.getPosicionX() + elemento.getAncho() &&
-				this.getPosicionX() + this.getAncho() > elemento.getPosicionX() &&
-				this.getPosicionY() < elemento.getPosicionY() + elemento.getLargo() &&
-				this.getLargo() + this.getPosicionY() > elemento.getPosicionY()) {
-			return true;
-		}
-		return false;
-	}
-
-	public void moverse() {
-		posicionX = posicionX + velocidadX;
-		posicionY = posicionY + velocidadY;
-	}
-	
-	public double getVelocidadX() {
-		return velocidadX;
-	}
-
-	public void setVelocidadX(double velocidadX) {
-		this.velocidadX = velocidadX;
-	}
-
-	public double getVelocidadY() {
-		return velocidadY;
-	}
-
-	public void setVelocidadY(double velocidadY) {
-		this.velocidadY = velocidadY;
-	}
-
 	public int getPosicionX() {
 		return (int) posicionX;
 	}
