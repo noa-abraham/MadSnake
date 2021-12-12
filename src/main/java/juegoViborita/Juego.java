@@ -33,19 +33,18 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	private Viborita viborita;
 	private HongoBueno hongoBueno; 
 	private HongoMalo hongoMalo; 
-	private List<HongoMalo> hongosMalos;
+	private int cantidadHongosMalos = 0;  
 	
 	private int Score;
-    private long goal;
-    private boolean juegoCorriendo;
     private int pantallaActual;
 	private Portada portada;
-	 private Pantalla pantallaGanador;
+	private Pantalla pantallaGanador;
 	private PantallaPerdedor pantallaPerdedor;
 	
     
     private int puntos;
     private int nivel;
+    private int length=0;
     private Sonidos sonidos;
 	
 	
@@ -56,7 +55,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			this.largoJuego = largoJuego;
 			this.tiempoDeEsperaEntreActualizaciones = tiempoDeEsperaEntreActualizaciones;
 			this.portada = new Portada(anchoJuego, largoJuego, "imagenes/portada.png");
-	        this.hongosMalos = new ArrayList<HongoMalo>();
+	        
 	       
 	      //  cargarSonidos();
 	       // this.sonidos.tocarSonido("apertura"); 
@@ -77,20 +76,30 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    }
 		
 		private void agregarHonguitosMalos () {
-			if(puntos>10 && puntos<=20) {
+			if(puntos>10 && puntos<=20) { //level 2
 				hongoMalo.nuevoHonguito();
+				cantidadHongosMalos++; 
 			}
 			
+			if (puntos>20) {
+				hongoMalo.nuevoHonguito(); //level 3
+				hongoMalo.nuevoHonguito();
+				hongoMalo.nuevoHonguito();
+				hongoMalo.nuevoHonguito();
+
+			}
+		
 		}
 		
 		 protected void paintComponent(Graphics g) {
 		   
 		        if (pantallaActual == PANTALLA_INICIO) {
+		        	this.limpiarPantalla (g); 
 		            dibujarInicioJuego(g);
 		        }
 		        if (pantallaActual == PANTALLA_PERDEDOR) {
 		            if (this.pantallaPerdedor == null) {
-		                this.pantallaPerdedor = new PantallaPerdedor(anchoJuego, largoJuego, "imagenes/perdiste.png", this.nivel;
+		                this.pantallaPerdedor = new PantallaPerdedor(anchoJuego, largoJuego, "imagenes/perdiste.png", this.nivel);
 		            }
 		            pantallaPerdedor.dibujarse(g);
 		        }
@@ -99,7 +108,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		        }
 		        if (pantallaActual == PANTALLA_JUEGO) {
 		            viborita.dibujarse(g);
-		            hongoBueno.dibujarse(g)
+		            hongoBueno.dibujarse(g); 
+
 		         
 		         
 		        }
@@ -130,13 +140,25 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    private void actualizarJuego() {
 	        verificarEstadoAmbiente();
 	        viborita.moverse();
-	     
-	       
+	        hongoBueno.nuevoHonguitoBueno();
+	 
 	    }
 	   
+	 // metodo para limpiar la pantalla
+	    private void limpiarPantalla(Graphics graphics) {
+	    	graphics.setColor(Color.MAGENTA); //color rectangulo que enmarca cabeceraTitulo, arriba, a los puntos, niveles y vidas
+	    	graphics.drawRect(24, 10, 851, 55);
+
+	    	graphics.setColor(Color.GREEN);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
+	    	graphics.drawRect(25, 74, 851, 577);
+			
+	    	graphics.setColor(Color.DARK_GRAY); //COLOR RELLENO DEL RECTANGULO DEL ESPAICO DE JUEGO
+	    	graphics.fillRect(26, 75, 850, 575);
+	    }
+	    
 	    
 	    private void dibujarJuego() {
-	        this.repaint();
+	        this.repaint(); //va a llamar a paint component
 	    }
 	    
 	    private void esperar(int milisegundos) {
@@ -165,6 +187,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	            hongoBueno.nuevoHonguitoBueno();
 	            viborita.crecerCola();;
 	            Score+=10;
+	            length++;
 	        }
 	        
 	        
@@ -177,34 +200,28 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        }
 	    }
 
-		public void paintJuego(Graphics graphics) {
-			g.setColor(Color.MAGENTA); //color rectangulo que enmarca cabeceraTitulo, arriba, a los puntos, niveles y vidas
-			g.drawRect(24, 10, 851, 55);
+	    public void paintJuego(Graphics graphics) {
+			 graphics.setColor(Color.MAGENTA); //color rectangulo que enmarca cabeceraTitulo, arriba, a los puntos, niveles y vidas
+			 graphics.drawRect(24, 10, 851, 55);
 			
-		
+			 graphics.setColor(Color.GREEN);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
+			 graphics.drawRect(25, 74, 851, 577);
 			
-			g.setColor(Color.GREEN);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
-			g.drawRect(25, 74, 851, 577);
+			 graphics.setColor(Color.DARK_GRAY); //COLOR RELLENO DEL RECTANGULO DEL ESPAICO DE JUEGO
+			 graphics.fillRect(26, 75, 850, 575);
 			
-			g.setColor(Color.DARK_GRAY); //COLOR RELLENO DEL RECTANGULO DEL ESPAICO DE JUEGO
-			g.fillRect(26, 75, 850, 575);
+			 graphics.setColor(Color.WHITE);
+			 graphics.setFont(new Font("Impact", Font.PLAIN, 14));
+			 graphics.drawString("Scores: "+puntos, 780, 30);
 			
-			g.setColor(Color.WHITE);
-			g.setFont(new Font("Impact", Font.PLAIN, 14));
-			g.drawString("Scores: "+puntos, 780, 30);
-			
-			g.setColor(Color.WHITE);
-			g.setFont(new Font("Impact", Font.PLAIN, 14));
-			g.drawString("Length: "+length, 780, 50);
+			 graphics.setColor(Color.WHITE);
+			 graphics.setFont(new Font("Impact", Font.PLAIN, 14));
+			 graphics.drawString("Length: "+length, 780, 50);
 			
 		}
 		
 		
 		
-		
-		
-
-
 
 		@Override
 		public void keyTyped(KeyEvent e) {
@@ -216,9 +233,23 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
+			if (pantallaActual == PANTALLA_INICIO) {
+	            inicializarJuego();
+	            pantallaActual = PANTALLA_JUEGO;
+	        }
+
+	        if (pantallaActual == PANTALLA_PERDEDOR || pantallaActual == PANTALLA_GANADOR) {
+	            pantallaActual = PANTALLA_INICIO;
+	        }
+
+	        if (pantallaActual == PANTALLA_JUEGO) {
+
 			int tecla = e.getKeyCode();
 			   
 		    switch (tecla){
+		    	case KeyEvent.VK_SPACE:
+		    		repaint(); 
+		    	
 		        case KeyEvent.VK_UP:
 		            viborita.direccion("ARR");
 		            break;
@@ -233,9 +264,9 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		            break;
 		        case KeyEvent.VK_E:
 		            System.exit(0);
-		        
-		    }
 
+		    	}
+	        }
 		}
 			
 
