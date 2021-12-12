@@ -151,7 +151,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			graphics.drawRect(24, 10, 851, 55);
 			 
 			 image=new ImageIcon("cabecera.png"); //cabeceraTitulo-fondo de color liso y el nombre en el medio
-			 image.paintIcon(this ,graphics, 25, 11);
+			 image.paintIcon(this,graphics, 25, 11);
 			
 			 graphics.setColor(Color.GREEN);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
 			 graphics.drawRect(25, 74, 851, 577);
@@ -204,6 +204,12 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	            length++;
 	        }
 	        
+	        /* Si traspasa la pared, usar este if que lo dejo bloqueado ya que la idea es que sea en otro nivel que ocurra
+	        if(viborita.getLargoCuerpito().get(0).x < 0 || viborita.getLargoCuerpito().get(0).x > 39 ||
+	        		viborita.getLargoCuerpito().get(0).y < 1 || viborita.getLargoCuerpito().get(0).y > 29) {
+	        		pantallaActual = PANTALLA_PERDEDOR;
+	            }
+	        */
 	        
 	        for(int n = 1; n < viborita.getLargoCuerpito().size(); n++) {
 	            if(viborita.getLargoCuerpito().get(0).equals(viborita.getLargoCuerpito().get(n)) && viborita.getLargoCuerpito().size() > 2) {

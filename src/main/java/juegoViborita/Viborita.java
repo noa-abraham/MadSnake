@@ -16,7 +16,7 @@ public class Viborita implements Dibujable  {
 	
 
 	public Viborita() {
-		largoCuerpito.add(new Point (20,15)); 
+		largoCuerpito.add(new Point (20,15)); //15 es el centro de la pantalla
 
 	}
 

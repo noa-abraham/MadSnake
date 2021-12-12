@@ -1,9 +1,7 @@
 package juegoViborita;
 
 
-
 import java.awt.Color;
-
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
