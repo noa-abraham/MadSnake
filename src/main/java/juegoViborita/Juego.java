@@ -139,7 +139,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    private void actualizarJuego() {
 	        verificarEstadoAmbiente();
 	        viborita.moverse();
-	        hongoBueno.nuevoHonguitoBueno();
+	        chequearColision(); 
+	       
 	 
 	    }
 	   
@@ -185,7 +186,6 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    }
 		
 	    private void verificarEstadoAmbiente() {
-	    	chequearColision(); 
 	        verificarFinDeJuego();
 	    }
 	    
@@ -200,10 +200,9 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    private void chequearColision(){
 	        if(viborita.getLargoCuerpito().get(0).equals(hongoBueno.getHongoBueno())) {
 	            hongoBueno.nuevoHonguitoBueno();
-	            viborita.crecerCola();;
+	            viborita.crecerCola();
 	            length++;
 	        }
-	        
 	        
 	        
 	        for(int n = 1; n < viborita.getLargoCuerpito().size(); n++) {
