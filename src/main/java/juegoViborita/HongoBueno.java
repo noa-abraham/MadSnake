@@ -25,7 +25,7 @@ public class HongoBueno implements Dibujable  {
 	
 	public void nuevoHonguitoBueno() {
 		hongoBueno.x = random.nextInt(34);
-		hongoBueno.y = random.nextInt(23) + 1;
+		hongoBueno.y = random.nextInt(23);
     }
 
 	@Override

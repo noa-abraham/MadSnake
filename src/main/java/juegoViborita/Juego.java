@@ -35,16 +35,17 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	private HongoMalo hongoMalo; 
 	private int cantidadHongosMalos = 0;  
 	
-	private int Score;
+
     private int pantallaActual;
-	private Portada portada;
+	private Pantalla portada;
 	private Pantalla pantallaGanador;
 	private PantallaPerdedor pantallaPerdedor;
+	private ImageIcon image;
 	
     
     private int puntos;
     private int nivel;
-    private int length=0;
+    private int length;
     private Sonidos sonidos;
 	
 	
@@ -54,7 +55,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			this.anchoJuego = anchoJuego;
 			this.largoJuego = largoJuego;
 			this.tiempoDeEsperaEntreActualizaciones = tiempoDeEsperaEntreActualizaciones;
-			this.portada = new Portada(anchoJuego, largoJuego, "imagenes/portada.png");
+			this.portada = new Pantalla(anchoJuego, largoJuego, "imagenes/portada.png");
 	        
 	       
 	      //  cargarSonidos();
@@ -70,15 +71,15 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        viborita.crecerCola();
 	        this.hongoBueno = new HongoBueno();
 	        hongoBueno.nuevoHonguitoBueno(); 
-	        agregarHonguitosMalos (); 
-	        //Score=0; 
+	        length = 0; 
+	       
 	      
 	    }
 		
 		private void agregarHonguitosMalos () {
 			if(puntos>10 && puntos<=20) { //level 2
 				hongoMalo.nuevoHonguito();
-				cantidadHongosMalos++; 
+				 
 			}
 			
 			if (puntos>20) {
@@ -90,11 +91,11 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			}
 		
 		}
+	
 		
 		 protected void paintComponent(Graphics g) {
-		   
+				this.limpiarPantalla (g); 
 		        if (pantallaActual == PANTALLA_INICIO) {
-		        	this.limpiarPantalla (g); 
 		            dibujarInicioJuego(g);
 		        }
 		        if (pantallaActual == PANTALLA_PERDEDOR) {
@@ -109,8 +110,6 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		        if (pantallaActual == PANTALLA_JUEGO) {
 		            viborita.dibujarse(g);
 		            hongoBueno.dibujarse(g); 
-
-		         
 		         
 		        }
 		    }
@@ -146,14 +145,30 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	   
 	 // metodo para limpiar la pantalla
 	    private void limpiarPantalla(Graphics graphics) {
+	    			
 	    	graphics.setColor(Color.MAGENTA); //color rectangulo que enmarca cabeceraTitulo, arriba, a los puntos, niveles y vidas
-	    	graphics.drawRect(24, 10, 851, 55);
-
-	    	graphics.setColor(Color.GREEN);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
-	    	graphics.drawRect(25, 74, 851, 577);
+			graphics.drawRect(24, 10, 851, 55);
+			 
+			 image=new ImageIcon("cabecera.png"); //cabeceraTitulo-fondo de color liso y el nombre en el medio
+			 image.paintIcon(this ,graphics, 25, 11);
 			
-	    	graphics.setColor(Color.DARK_GRAY); //COLOR RELLENO DEL RECTANGULO DEL ESPAICO DE JUEGO
-	    	graphics.fillRect(26, 75, 850, 575);
+			 graphics.setColor(Color.GREEN);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
+			 graphics.drawRect(25, 74, 851, 577);
+			
+			 graphics.setColor(Color.DARK_GRAY); //COLOR RELLENO DEL RECTANGULO DEL ESPAICO DE JUEGO
+			 graphics.fillRect(26, 75, 850, 575);
+			 
+			 graphics.setColor(Color.MAGENTA);
+			 graphics.setFont(new Font("Impact", Font.PLAIN, 20));
+			 graphics.drawString("LEVEL 1 score(0-10)", 100, 47);
+			
+			 graphics.setColor(Color.WHITE);
+			 graphics.setFont(new Font("Impact", Font.PLAIN, 14));
+			 graphics.drawString("Scores: "+puntos, 780, 30);
+			
+			 graphics.setColor(Color.WHITE);
+			 graphics.setFont(new Font("Impact", Font.PLAIN, 14));
+			 graphics.drawString("Length: "+length, 780, 50);
 	    }
 	    
 	    
@@ -186,7 +201,6 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        if(viborita.getLargoCuerpito().get(0).equals(hongoBueno.getHongoBueno())) {
 	            hongoBueno.nuevoHonguitoBueno();
 	            viborita.crecerCola();;
-	            Score+=10;
 	            length++;
 	        }
 	        

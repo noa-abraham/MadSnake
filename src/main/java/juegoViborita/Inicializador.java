@@ -15,7 +15,7 @@ public class Inicializador  {
 		
 		int anchoVentana = 905;
 		int largoVentana = 700;
-		int tiempoDeEsperaEntreActualizaciones = 5;
+		int tiempoDeEsperaEntreActualizaciones = 120;
 
       
         System.setProperty("sun.java2d.opengl", "true");

@@ -29,8 +29,8 @@ public class HongoMalo {
     }
 
     public void nuevoHonguito() {
-        honguito.x = random.nextInt(39);
-        honguito.y = random.nextInt(28) + 1;
+        honguito.x = random.nextInt(34);
+        honguito.y = random.nextInt(23);
     }
 
     public void dibujoHonguito(Graphics g) {
