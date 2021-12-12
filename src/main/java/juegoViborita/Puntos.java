@@ -26,9 +26,7 @@ public class Puntos implements Dibujable {
         g.drawString("Puntaje: " + String.valueOf(puntaje), posicionX, posicionY);
     }
 
-    public void restarPunto() {
-        puntaje--;
-    }
+
 
     public void sumarPunto() {
         puntaje++;

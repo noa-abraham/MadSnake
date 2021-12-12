@@ -19,6 +19,8 @@ public class Pantalla implements Dibujable {
 	
     public Pantalla (int ancho, int largo, String resource) {
 		try {
+			this.ancho = ancho;
+			this.largo = ancho; 
 			String path = Paths.get(Pantalla.class.getClassLoader().getResource("imagenes/portada.png").toURI()).toString();
 			this.img = ImageIO.read(new File(path));
 		} catch (IOException e) {

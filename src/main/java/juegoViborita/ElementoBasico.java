@@ -3,12 +3,14 @@ package juegoViborita;
 import java.awt.Color;
 
 
+//acá el profe pone hay colision y moverse. 
+
 public abstract class ElementoBasico implements Elemento {
 	
-	private int posicionX;
-	private int posicionY;
+	protected int posicionX;
+	protected int posicionY;
 	private int ancho;
-	private int largo;
+	protected int largo;
 	private Color color;
 	
 	public ElementoBasico (int posicionX, int posicionY, int ancho, int largo, Color color) {
@@ -20,46 +22,49 @@ public abstract class ElementoBasico implements Elemento {
 	}
 	
 
-	public int getPosicionY() {
-		return  posicionY;
-	}
-	
 	public int getPosicionX() {
 		return posicionX;  
 	}
 
+	
 	public void setPosicionX(int posicionX) {
 		this.posicionX = posicionX;
 	}
+	
+	
 
+	public int getPosicionY() {
+		return  posicionY;
+	}
+	
 	public void setPosicionY(int posicionY) {
 		this.posicionY = posicionY;
 	}
+	
 
 	public int getAncho() {
 		return ancho;
+	}
+	
+	public void setAncho(int ancho) {
+		this.ancho = ancho;
 	}
 
 	public int getLargo() {
 		return largo;
 	}
+	
+	public void setLargo(int largo) {
+		this.largo = largo;
+	}
+
 
 	public Color getColor() {
 		return color;
 	}
 
-	public void setAncho(int ancho) {
-		this.ancho = ancho;
-	}
-
-	public void setLargo(int largo) {
-		this.largo = largo;
-	}
-
 	public void setColor(Color color) {
 		this.color = color;
 	}
-
-
 
 }

@@ -3,7 +3,7 @@ package juegoViborita;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public interface Elemento {
+public interface Elemento extends Dibujable {
 	
 	public int getPosicionX();
 
@@ -14,6 +14,8 @@ public interface Elemento {
 	public int getLargo();
 
 	public Color getColor();
+	
+	public void hayColision (Elemento elemento); 
 
 	public void dibujarse(Graphics graphics);
 

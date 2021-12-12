@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-public class PantallaPerdedor extends Pantalla{
+public class PantallaPerdedor extends Pantalla {
 	
 
-	public PantallaPerdedor(int ancho, int largo,String resource) {
+
+	public PantallaPerdedor(int ancho, int largo,String resource, int nivel) {
 		super(ancho, largo, resource);
+	
 		
 	}
 	
