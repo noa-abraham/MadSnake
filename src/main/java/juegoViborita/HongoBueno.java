@@ -16,8 +16,6 @@ public class HongoBueno implements Dibujable  {
 	
 	private Random random;
     private Point hongoBueno;
-    
-
 
 	public HongoBueno() {
 		this.random = new Random (); 
@@ -32,8 +30,8 @@ public class HongoBueno implements Dibujable  {
 
 	@Override
 	public void dibujarse(Graphics graphics) {
-		graphics.setColor(Color.red);
-		graphics.fillOval(hongoBueno.x*25, hongoBueno.y*25, 25, 25);
+		graphics.setColor(Color.green);
+		graphics.fillOval(hongoBueno.x*20, hongoBueno.y*20, 20, 20);
 		
 	}
 	

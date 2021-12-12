@@ -33,7 +33,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	private Viborita viborita;
 	private HongoBueno hongoBueno; 
 	private HongoMalo hongoMalo; 
-	private int cantidadHongosMalos = 0;  
+	 
 	
 
     private int pantallaActual;
@@ -46,7 +46,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
     private int puntos;
     private int nivel;
     private int length;
-    private Sonidos sonidos;
+    //private Sonidos sonidos;
 	
 	
 		

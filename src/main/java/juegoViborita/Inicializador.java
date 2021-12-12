@@ -30,6 +30,8 @@ public class Inicializador  {
         ventana.setVisible(true);
         
         Juego juego = new Juego (anchoVentana, largoVentana, tiempoDeEsperaEntreActualizaciones ); 
+        juego.setFocusable(true); 
+        juego.setFocusTraversalKeysEnabled(false); 
         
      // Agregar a la ventana el JComponent (Juego hereda de JComponent)
         ventana.add(juego);
