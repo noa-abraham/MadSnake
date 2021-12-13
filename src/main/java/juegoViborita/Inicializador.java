@@ -19,7 +19,7 @@ public class Inicializador  {
         System.setProperty("sun.java2d.opengl", "true");
 
      
-        JFrame ventana = new JFrame("****M A D  // S N I K E**** ");
+        JFrame ventana = new JFrame("****M A D  // S N A K E**** ");
         
         ventana.setBounds(10, 10, 905, 700); 
         ventana.setBackground(Color.BLACK); 

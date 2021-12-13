@@ -21,9 +21,9 @@ public class PantallaGanador extends Pantalla {
 	    private void mostrarMensaje(Graphics g) {
 	    	g.setColor(Color.blue);
 			g.setFont(new Font("Impact", Font.BOLD, 50));
-			g.drawString("You WIN",310,300);
+			g.drawString("GANASTE !",310,300);
 			g.setFont(new Font("Impact", Font.BOLD, 30));
-			g.drawString("Press spacebar to Restart",260,340);
+			g.drawString("Presiona ESPACIO para iniciar",260,340);
 	    }
 
 

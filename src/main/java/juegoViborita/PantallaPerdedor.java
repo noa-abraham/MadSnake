@@ -23,9 +23,9 @@ public class PantallaPerdedor extends Pantalla {
 	 private void mostrarMensaje(Graphics g) {
 	    	g.setColor(Color.GREEN);
 			g.setFont(new Font("Impact", Font.BOLD, 50));
-			g.drawString("GAME OVER",300,300);
+			g.drawString("PERDISTE !",350,410);
 			g.setFont(new Font("Impact", Font.BOLD, 30));
-			g.drawString("Press spacebar to Restart",280,340);
+			g.drawString("Presiona ESPACIO para iniciar",300,450);
 	    }
 
 }

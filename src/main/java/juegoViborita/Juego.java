@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -46,7 +48,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
     private int puntos;
     private int nivel;
     private int length;
-    //private Sonidos sonidos;
+    //private Sonidos musica;
 	
 	
 		
@@ -55,12 +57,17 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			this.anchoJuego = anchoJuego;
 			this.largoJuego = largoJuego;
 			this.tiempoDeEsperaEntreActualizaciones = tiempoDeEsperaEntreActualizaciones;
+<<<<<<< HEAD
 			this.portada = new Pantalla(anchoJuego, largoJuego, "imagenes/portada.png"); //aparece portada
+=======
+			this.portada = new Pantalla(anchoJuego, largoJuego, "imagenes/portada.png");
+			//this.musica = new Sonidos("apertura.mp3");
+>>>>>>> e271ed81a89532b5d5394d0ce44f411369795cf8
 	        
 	       
 	      //  cargarSonidos();
 	       // this.sonidos.tocarSonido("apertura"); 
-	        inicializarJuego (); //para cuando inicia el juego como pára cuyando perdes
+	        //inicializarJuego (); //para cuando inicia el juego como pára cuyando perdes
 		}
 
 
@@ -72,6 +79,12 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        this.hongoBueno = new HongoBueno(int[] comidax, int[] comiday );
 	        hongoBueno.nuevoHonguitoBueno(); 
 	        length = 0; 
+<<<<<<< HEAD
+=======
+	        //musica.play();
+	       
+	      
+>>>>>>> e271ed81a89532b5d5394d0ce44f411369795cf8
 	    }
 		
 
@@ -93,6 +106,9 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	
 		
 		 protected void paintComponent(Graphics g) {
+			 	image=new ImageIcon("imagenes/cabecera.png"); //cabeceraTitulo-fondo de color liso y el nombre en el medio
+			 	image.paintIcon(this, g, 25, 11);
+			 
 				this.limpiarPantalla (g); 
 		        if (pantallaActual == PANTALLA_INICIO) {
 		            dibujarInicioJuego(g);
@@ -150,7 +166,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			graphics.drawRect(24, 10, 851, 55);
 			 
 			 image=new ImageIcon("cabecera.png"); //cabeceraTitulo-fondo de color liso y el nombre en el medio
-			 image.paintIcon(this,graphics, 25, 11);
+			 image.paintIcon(this,graphics , 25, 11);
 			
 			 graphics.setColor(Color.GREEN);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
 			 graphics.drawRect(25, 74, 851, 577);
@@ -203,11 +219,19 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	            length++;
 	        }
 	        
+<<<<<<< HEAD
 	        // Si traspasa la pared, usar este if que lo dejo bloqueado ya que la idea es que sea en otro nivel que ocurra
 	        if(viborita.getLargoCuerpito().get(0).x < 0 || viborita.getLargoCuerpito().get(0).x > 39 ||
 	        		viborita.getLargoCuerpito().get(0).y < 1 || viborita.getLargoCuerpito().get(0).y > 29) {
 	        		pantallaActual = PANTALLA_PERDEDOR;
 	            }
+=======
+	        /*//Si traspasa la pared, usar este if que lo dejo bloqueado ya que la idea es que sea en otro nivel que ocurra
+	        if(viborita.getLargoCuerpito().get(0).x < 0 || viborita.getLargoCuerpito().get(0).x > 39 ||
+	        		viborita.getLargoCuerpito().get(0).y < 1 || viborita.getLargoCuerpito().get(0).y > 29) {
+	        		pantallaActual = PANTALLA_PERDEDOR;
+	            }*/
+>>>>>>> e271ed81a89532b5d5394d0ce44f411369795cf8
 	        
 	        
 	        for(int n = 1; n < viborita.getLargoCuerpito().size(); n++) {
