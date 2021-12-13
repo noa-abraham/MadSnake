@@ -51,11 +51,11 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	
 		
 		public Juego (int anchoJuego, int largoJuego, int tiempoDeEsperaEntreActualizaciones ) {
-			this.pantallaActual = PANTALLA_INICIO;
+			this.pantallaActual = PANTALLA_INICIO; //la que tiene la portada
 			this.anchoJuego = anchoJuego;
 			this.largoJuego = largoJuego;
 			this.tiempoDeEsperaEntreActualizaciones = tiempoDeEsperaEntreActualizaciones;
-			this.portada = new Pantalla(anchoJuego, largoJuego, "imagenes/portada.png");
+			this.portada = new Pantalla(anchoJuego, largoJuego, "imagenes/portada.png"); //aparece portada
 	        
 	       
 	      //  cargarSonidos();
@@ -69,12 +69,12 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			this.pantallaPerdedor = null;
 	        this.viborita = new Viborita (); 
 	        viborita.crecerCola();
-	        this.hongoBueno = new HongoBueno();
+	        this.hongoBueno = new HongoBueno(int[] comidax, int[] comiday );
 	        hongoBueno.nuevoHonguitoBueno(); 
 	        length = 0; 
-	       
-	      
 	    }
+		
+		
 		
 		private void agregarHonguitosMalos () {
 			if(puntos>10 && puntos<=20) { //level 2
@@ -204,12 +204,12 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	            length++;
 	        }
 	        
-	        /* Si traspasa la pared, usar este if que lo dejo bloqueado ya que la idea es que sea en otro nivel que ocurra
+	        // Si traspasa la pared, usar este if que lo dejo bloqueado ya que la idea es que sea en otro nivel que ocurra
 	        if(viborita.getLargoCuerpito().get(0).x < 0 || viborita.getLargoCuerpito().get(0).x > 39 ||
 	        		viborita.getLargoCuerpito().get(0).y < 1 || viborita.getLargoCuerpito().get(0).y > 29) {
 	        		pantallaActual = PANTALLA_PERDEDOR;
 	            }
-	        */
+	        
 	        
 	        for(int n = 1; n < viborita.getLargoCuerpito().size(); n++) {
 	            if(viborita.getLargoCuerpito().get(0).equals(viborita.getLargoCuerpito().get(n)) && viborita.getLargoCuerpito().size() > 2) {
