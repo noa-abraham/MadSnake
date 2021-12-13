@@ -74,7 +74,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        length = 0; 
 	    }
 		
-		
+
 		
 		private void agregarHonguitosMalos () {
 			if(puntos>10 && puntos<=20) { //level 2
