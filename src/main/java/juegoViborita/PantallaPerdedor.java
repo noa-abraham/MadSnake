@@ -8,7 +8,7 @@ public class PantallaPerdedor extends Pantalla {
 	
 
 
-	public PantallaPerdedor(int ancho, int largo,String resource, int nivel) {
+	public PantallaPerdedor(int ancho, int largo,String resource) {
 		super(ancho, largo, resource);
 	
 		
@@ -23,9 +23,9 @@ public class PantallaPerdedor extends Pantalla {
 	 private void mostrarMensaje(Graphics g) {
 	    	g.setColor(Color.GREEN);
 			g.setFont(new Font("Impact", Font.BOLD, 50));
-			g.drawString("PERDISTE !",350,410);
+			g.drawString("PERDISTE!",350,410);
 			g.setFont(new Font("Impact", Font.BOLD, 30));
-			g.drawString("Presiona ESPACIO para iniciar",300,450);
+			g.drawString("Presioná ESPACIO para iniciar",300,450);
 	    }
 
 }

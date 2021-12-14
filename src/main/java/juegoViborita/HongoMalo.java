@@ -11,37 +11,49 @@ import java.nio.file.Paths;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Point;
-import java.util.Random;
 
-public class HongoMalo {
+
+public class HongoMalo implements Dibujable
+{
 	
 	private Random random;
-    private Point honguito;
+    private Point hongoMalo;
+    private BufferedImage img;
     
     public HongoMalo(){
         random = new Random(); 
-        honguito = new Point();
-    }
+        hongoMalo = new Point();
+        try {
+    		String path = Paths.get(HongoBueno.class.getClassLoader().getResource("imagenes/hongoAzul.gif").toURI()).toString();
+    		this.img = ImageIO.read(new File(path));
+    		} 
+        catch (IOException e) {
+    		throw new RuntimeException(e);
+    		} catch (URISyntaxException e) {
+    			e.printStackTrace();
+    		}
+    	}
+   
 
     public void nuevoHonguito() {
-        honguito.x = random.nextInt(34);
-        honguito.y = random.nextInt(23);
+        hongoMalo.x = random.nextInt(34);
+        hongoMalo.y = random.nextInt(23);
     }
 
-    public void dibujoHonguito(Graphics g) {
-        g.setColor(Color.blue);
-        g.fillOval(honguito.x*20, honguito.y*20, 20, 20);
+	@Override
+    public void dibujarse(Graphics graphics) {
+    	try {
+    		graphics.drawImage(img, hongoMalo.x*20, hongoMalo.y*20, 25, 25, null);
+        } catch (Exception e1) {
+            throw new RuntimeException(e1);
+        }
     }
-    
-    public Point getHonguito()
-    {
-        return honguito;
+	
+    public Point getHongoMalo() {
+        return hongoMalo;
     }
+
     
 }
 	

@@ -8,27 +8,24 @@ import java.util.ArrayList;
 
 public class Viborita implements Dibujable  {
 	
-	
-	private ArrayList<Point> largoCuerpito = new ArrayList<Point>();
+	private ArrayList<Point> largoCuerpito = new ArrayList<Point>(); //almacena puntos del cuerpo x,y
 	private int posicionX = 0; 
 	private int posicionY = 0; 
 	
 
 	public Viborita() {
-		largoCuerpito.add(new Point (20,15)); //15 es el centro de la pantalla
-
+		largoCuerpito.add(new Point (20,10)); //15 es el centro de la pantalla
 	}
 
 
 	@Override
-	public void dibujarse(Graphics graphics) {
-		
+	public void dibujarse(Graphics g) {
 		for(int n = 0; n < largoCuerpito.size(); n++) {
-			graphics.setColor(Color.pink);
-            Point p = largoCuerpito.get(n);
-            graphics.fillRect(p.x*20, p.y*20, 20, 20);
+            g.setColor(Color.MAGENTA);
+            Point puntoDelCuerpito = largoCuerpito.get(n);
+            g.fillRect(puntoDelCuerpito.x*20, puntoDelCuerpito.y*20, 20, 20); //al ponerlo en 25, 25 logramos que se separen los rectángulos del cuerpo, que sean separaditos
         }
-		
+	
 	}
 	
 	public void moverse () {
@@ -40,7 +37,7 @@ public class Viborita implements Dibujable  {
     }
     
     public void crecerCola () {
-            largoCuerpito.add(new Point());
+            largoCuerpito.add(new Point()); //agrega un nuevo punto
         }
     
     public void direccion(String sentidoDireccion) {
@@ -65,18 +62,9 @@ public class Viborita implements Dibujable  {
         }
     }
 
+    
 	public ArrayList<Point> getLargoCuerpito() {
 		return largoCuerpito;
 	}
-
-
-	public void setLargoCuerpito(ArrayList<Point> largoCuerpito) {
-		this.largoCuerpito = largoCuerpito;
-	}
-
-
 	
-
-
-
 }

@@ -11,7 +11,7 @@ public class Inicializador  {
 
 	public static void main(String[] args) {
 		
-		int anchoVentana = 905;
+		int anchoVentana = 900;
 		int largoVentana = 700;
 		int tiempoDeEsperaEntreActualizaciones = 120;
 
@@ -23,9 +23,11 @@ public class Inicializador  {
         
         ventana.setBounds(10, 10, 905, 700); 
         ventana.setBackground(Color.BLACK); 
+        ventana.setResizable(false); 
         ventana.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
+        
         
         Juego juego = new Juego (anchoVentana, largoVentana, tiempoDeEsperaEntreActualizaciones ); 
         juego.setFocusable(true); 
@@ -33,6 +35,7 @@ public class Inicializador  {
         
      // Agregar a la ventana el JComponent (Juego hereda de JComponent)
         ventana.add(juego);
+        
 
         // Enviar los eventos recibidos de movimientos del teclado al juego (esto es
         // porque la clase Juego implementa: MouseMotionListener)
