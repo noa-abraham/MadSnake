@@ -25,7 +25,7 @@ public class HongoMalo implements Dibujable
         random = new Random(); 
         hongoMalo = new Point();
         try {
-    		String path = Paths.get(HongoBueno.class.getClassLoader().getResource("imagenes/hongoAzul.gif").toURI()).toString();
+    		String path = Paths.get(HongoMalo.class.getClassLoader().getResource("imagenes/hongoAzul.gif").toURI()).toString();
     		this.img = ImageIO.read(new File(path));
     		} 
         catch (IOException e) {
@@ -36,7 +36,7 @@ public class HongoMalo implements Dibujable
     	}
    
 
-    public void nuevoHonguito() {
+    public void nuevoHonguitoMalo() {
         hongoMalo.x = random.nextInt(34);
         hongoMalo.y = random.nextInt(23);
     }

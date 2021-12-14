@@ -62,7 +62,7 @@ public class Viborita implements Dibujable  {
         }
     }
 
-    
+   
 	public ArrayList<Point> getLargoCuerpito() {
 		return largoCuerpito;
 	}

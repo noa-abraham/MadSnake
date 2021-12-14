@@ -1,6 +1,5 @@
 package juegoViborita;
 
-
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -10,34 +9,28 @@ import java.nio.file.Paths;
 
 import javax.imageio.ImageIO;
 
-
-public class Pantalla implements Dibujable {
+public class CabeceraTitulo extends Pantalla {
 	
 	private BufferedImage img;
-	protected int ancho;
-    protected int largo;
 	
-    public Pantalla (int ancho, int largo, String resource) {
+	public CabeceraTitulo(int ancho, int largo, String resource) {
+		super(ancho, largo, resource);
 		try {
-			this.ancho = ancho;
-			this.largo = ancho; 
-			String path = Paths.get(Pantalla.class.getClassLoader().getResource(resource).toURI()).toString();
+			String path = Paths.get(Portada.class.getClassLoader().getResource("imagenes/cabecera.png").toURI()).toString();
 			this.img = ImageIO.read(new File(path));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
-    }
-
-	@Override
+	}
 	public void dibujarse(Graphics graphics) {
 		try {
-			graphics.drawImage(img, 0, 0, ancho, largo, null);
+			graphics.drawImage(img, 25, 11, 850, 55, null);
 		} catch (Exception e1) {
 			throw new RuntimeException(e1);
 		}
-		
 	}
+	
 
 }

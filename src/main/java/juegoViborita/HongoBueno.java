@@ -41,7 +41,7 @@ public class HongoBueno implements Dibujable  {
 	public void dibujarse(Graphics graphics) {
 		try {
 			
-			graphics.drawImage(img, hongoBueno.x*20, hongoBueno.y*20, 25, 25, null);
+			graphics.drawImage(img, hongoBueno.x*20, hongoBueno.y*20, 25, 25, null); 
         } catch (Exception e1) {
             throw new RuntimeException(e1);
         }
