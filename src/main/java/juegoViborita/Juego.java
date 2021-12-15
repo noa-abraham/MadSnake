@@ -236,29 +236,24 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	            }
 	        }
 	    }
-	    
-	    
-	    
+	   
 	    public void chequearPuntosyNiveles() {
 	    	if (puntos.getPuntaje() == 11 ) {
 	    		level= 2; 
-	    		nivel.sumarNivel(); 
-	    		agregarHongosMalos (); 
+	    
+	    		//nivel.sumarNivel(); 
 	    		
 				
 	    	}else if (puntos.getPuntaje() == 22) {
 	    		level= 3;
-	    		hongoMalo.nuevoHonguitoMalo();
-	    		hongoMalo.nuevoHonguitoMalo();
-				hongoMalo.dibujarse(getGraphics());
-				hongoMalo.dibujarse(getGraphics());
+	    		
 
 	    	}
 	    }
 	    
-	    public void agregarHongosMalos () {
+	    public void agregarHongosMalos (Graphics g) {
 	    	hongoMalo.nuevoHonguitoMalo();
-			hongoMalo.dibujarse(getGraphics());	
+			hongoMalo.dibujarse(g);	
 	    }
 	    
 	
