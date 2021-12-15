@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+
 public class Juego extends JPanel implements KeyListener, Runnable {
     
 	
@@ -49,8 +50,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	private ImageIcon image;
 	private Nivel nivel; 
 	private Puntos puntos; 
-	
-    //private Sonidos musica;
+	private Sonidos sonidos;
+
 	
 	
 		
@@ -60,12 +61,12 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			this.largoJuego = largoJuego;
 			this.tiempoDeEsperaEntreActualizaciones = tiempoDeEsperaEntreActualizaciones;
 			this.portada = new Pantalla(anchoJuego, largoJuego, "imagenes/portada.png"); //aparece portada
-			this.pantallaPerdedor = new PantallaPerdedor (anchoJuego, largoJuego, "imagenes/perdiste.png"); 
+			this.pantallaPerdedor = new PantallaPerdedor (anchoJuego, largoJuego, "imagenes/perdiste.png");
+	        cargarSonidos();
+	        this.sonidos.repetirSonido("juego");
 		
 			
-			//this.musica = new Sonidos("apertura.mp3");
-	      //  cargarSonidos();
-	       // this.sonidos.tocarSonido("apertura"); 
+		     
 	        inicializarJuego (); //para cuando inicia el juego como pára cuyando perdes
 		}
 
@@ -82,6 +83,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        hongoBueno.nuevoHonguitoBueno(); 
 	        this.hongoMalo = new HongoMalo (); 
 	        hongoMalo.nuevoHonguitoMalo();
+
 		}
 
 		@Override
@@ -133,7 +135,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		            nivel.dibujarse(g); 
 		            puntos.dibujarse(g);
 		            hongoBueno.dibujarse(g);
-		            hongoMalo.dibujarse(g); 
+		            //hongoMalo.dibujarse(g); 
 		            
 		        }
 		    }
@@ -157,6 +159,19 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	       
 	 
 	    }
+	    
+	    private void cargarSonidos() {
+	        try {
+	        	sonidos = new Sonidos();
+	            sonidos.agregarSonido("background", "musica/background.wav");
+	            sonidos.agregarSonido("vida", "musica/vida.wav");
+	            sonidos.agregarSonido("juego", "musica/juego.wav");
+	            sonidos.agregarSonido("perdiste", "musica/perdiste.wav");
+	        } catch (Exception e1) {
+	            throw new RuntimeException(e1);
+	        }
+	    }
+
 	   
 	 // metodo para limpiar la pantalla
 	    private void limpiarPantalla(Graphics graphics) {
@@ -198,11 +213,13 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	            hongoBueno.nuevoHonguitoBueno();
 	            viborita.crecerCola();
 	            puntos.sumarPunto();
+	            sonidos.tocarSonido("vida");
 	        }
 	    	
 	    	//Si come honguitosMalos
 	    	if(viborita.getLargoCuerpito().get(0).equals(hongoMalo.getHongoMalo())) {
 	    		pantallaActual = PANTALLA_PERDEDOR;
+	    		sonidos.tocarSonido("perdiste");
 	    	}
 	        
 
@@ -213,12 +230,17 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        		//tercer termino del if representa arriba || representa abajo
 	        		viborita.getLargoCuerpito().get(0).y < 0 || viborita.getLargoCuerpito().get(0).y > 35) {
 	        		pantallaActual = PANTALLA_PERDEDOR;
+	        		sonidos.tocarSonido("perdiste");
+	        		
+	        	
 	            }
 
 	        //COMPRUEBA SI LA POSICION DE LA CABEZA ES IGUAL A LA DEL CUERPO
 	        for(int i = 1; i < viborita.getLargoCuerpito().size(); i++) {
 	            if(viborita.getLargoCuerpito().get(0).equals(viborita.getLargoCuerpito().get(i)) && viborita.getLargoCuerpito().size() > 2) {
 	            	pantallaActual = PANTALLA_PERDEDOR;
+	            	sonidos.tocarSonido("perdiste");
+	            	
 	            	
 	            }
 	        }
@@ -226,7 +248,11 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    
 	    
 	    public void chequearNivel() {
-	    	if(puntos.getPuntaje()>10 && puntos.getPuntaje()<=20) {
+	    	if (puntos.getPuntaje() > 10 && puntos.getPuntaje() <= 20 ) {
+	    		
+	    		
+	    	}
+	    	/*if(puntos.getPuntaje()>10 && puntos.getPuntaje()<=20) {
 	    		nivel.sumarNivel();
 				
 			} else if(puntos.getPuntaje()>20 && puntos.getPuntaje()<=30) {
@@ -238,7 +264,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 				//nivel.sumarNivel();
 			}if(puntos.getPuntaje()==50) {
 				//dibujar pantalla ganador
-			}
+			}*/
 
 	    }
 	    
