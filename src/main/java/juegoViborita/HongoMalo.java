@@ -1,6 +1,6 @@
 package juegoViborita;
 
-import java.awt.Color;
+
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -14,12 +14,13 @@ import javax.imageio.ImageIO;
 
 
 
-public class HongoMalo implements Dibujable
-{
+public class HongoMalo implements Dibujable {
 	
 	private Random random;
     private Point hongoMalo;
     private BufferedImage img;
+    private int posicionX = 34; 
+    private int posicionY = 23; 
     
     public HongoMalo(){
         random = new Random(); 
@@ -37,8 +38,14 @@ public class HongoMalo implements Dibujable
    
 
     public void nuevoHonguitoMalo() {
-        hongoMalo.x = random.nextInt(34);
-        hongoMalo.y = random.nextInt(23);
+        hongoMalo.x = random.nextInt(posicionX);
+        hongoMalo.y = random.nextInt(posicionY);
+        if (hongoMalo.y <= 3) {
+        	hongoMalo.y = 4;
+		}
+		if (hongoMalo.x <= 1) {
+			hongoMalo.x = 4; 
+		}
     }
 
 	@Override

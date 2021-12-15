@@ -28,13 +28,13 @@ public class Juego extends JPanel implements KeyListener, Runnable {
     private final static int PANTALLA_JUEGO = 2;
     private final static int PANTALLA_PERDEDOR = 3;
     private final static int PANTALLA_GANADOR = 4;
+
+   
   
 	
 	private int anchoJuego;
 	private int largoJuego;
 	private int tiempoDeEsperaEntreActualizaciones; 
-	private static final int ANCHO_ESPACIOJUEGO = 851; 
-	private static final int LARGO_ESPACIOJUEGO = 55; 
 	
 	
 	private Viborita viborita;
@@ -47,8 +47,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	private Pantalla pantallaGanador;
 	private PantallaPerdedor pantallaPerdedor;
 	private Pantalla cabeceraTitulo; 
-	private ImageIcon image;
 	private Nivel nivel; 
+	public static int level = 1;
 	private Puntos puntos; 
 	private Sonidos sonidos;
 
@@ -61,12 +61,9 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			this.largoJuego = largoJuego;
 			this.tiempoDeEsperaEntreActualizaciones = tiempoDeEsperaEntreActualizaciones;
 			this.portada = new Pantalla(anchoJuego, largoJuego, "imagenes/portada.png"); //aparece portada
-			this.pantallaPerdedor = new PantallaPerdedor (anchoJuego, largoJuego, "imagenes/perdiste.png");
+			this.pantallaGanador = new Pantalla(anchoJuego, largoJuego, "imagenes/ganaste.png"); 
 	        cargarSonidos();
 	        this.sonidos.repetirSonido("juego");
-		
-			
-		     
 	        inicializarJuego (); //para cuando inicia el juego como pára cuyando perdes
 		}
 
@@ -104,60 +101,49 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	       
 		
 		 protected void paintComponent(Graphics g) {
-				limpiarPantalla (g); 
+				this.limpiarPantalla (g); 
 		        if (pantallaActual == PANTALLA_INICIO) {
 		            dibujarInicioJuego(g);
 		        }
 		        if (pantallaActual == PANTALLA_PERDEDOR) {
 		            if (this.pantallaPerdedor == null) {
-		                this.pantallaPerdedor = new PantallaPerdedor(anchoJuego, largoJuego, "imagenes/perdiste.png");
+		                this.pantallaPerdedor = new PantallaPerdedor(anchoJuego, largoJuego, "imagenes/perdiste.png", puntos.getPuntaje());
 		            }
-		                pantallaPerdedor.dibujarse(g);
+		            pantallaPerdedor.dibujarse(g);
 		        }
 		        if (pantallaActual == PANTALLA_GANADOR) {
 		            pantallaGanador.dibujarse(g);
 		        }
 		        if (pantallaActual == PANTALLA_JUEGO) {
-		        	
-		        	//meterlo en funcion
-		        	g.setColor(Color.yellow); //color rectangulo que enmarca cabeceraTitulo, arriba, a los puntos, niveles y vidas
-					g.drawRect(24, 10 , 851, 55);
-					
-					cabeceraTitulo.dibujarse(g); 
-		        	
-		        	 g.setColor(Color.DARK_GRAY); //COLOR RELLENO DEL RECTANGULO DEL ESPAICO DE JUEGO
-					 g.fillRect(26, 75, 850, 575);
-					 
-					 g.setColor(Color.yellow);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
-					 g.drawRect(25, 74, 851, 577);
-					 
-		            viborita.dibujarse(g);
-		            nivel.dibujarse(g); 
-		            puntos.dibujarse(g);
-		            hongoBueno.dibujarse(g);
-		            //hongoMalo.dibujarse(g); 
-		            
+		        	dibujarEspacioDeJuego(g);     
 		        }
 		    }
-		 
-		 
+		 	 
 		 
 		 private void dibujarInicioJuego(Graphics g) {
 		        portada.dibujarse(g);
-		    }
+		 }
 		 
-	
-		
-		
-		// En este metodo se actualiza el estado de todos los elementos del juego
+		 private void dibujarEspacioDeJuego (Graphics g) {
+			 g.setColor(Color.yellow); //color rectangulo que enmarca cabeceraTitulo, arriba, a los puntos, niveles y vidas
+			 g.drawRect(24, 10 , 851, 55);
+			 cabeceraTitulo.dibujarse(g); 
+			 g.setColor(Color.DARK_GRAY); //COLOR RELLENO DEL RECTANGULO DEL ESPAICO DE JUEGO
+			 g.fillRect(26, 75, 850, 575);
+			 g.setColor(Color.yellow);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
+			 g.drawRect(25, 68, 851, 577);
+	         viborita.dibujarse(g);
+	         nivel.dibujarse(g); 
+	         puntos.dibujarse(g);
+	         hongoBueno.dibujarse(g);
+	       //hongoMalo.dibujarse(g); 
+			 
+		 }
+		 
+
 	    private void actualizarJuego() {
 	        verificarEstadoAmbiente();
 	        viborita.moverse();
-	        chequearColision();
-	        chequearNivel(); 
-	        chequearPuntos(); 
-	       
-	 
 	    }
 	    
 	    private void cargarSonidos() {
@@ -193,87 +179,86 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	            throw new RuntimeException(e1);
 	        }
 	    }
-		
 	    
 	    private void verificarEstadoAmbiente() {
-	        verificarFinDeJuego();
+	    	chequearColisionHongosBuenos();
+	    	chequearColisionHongosMalos(); 
+	    	chequearColisionParedes ();
+	    	chequearColisionConCuerpoViborita();
+	    	chequearPuntosyNiveles(); 
+	    	verificarFinDeJuego();
 	    }
+	        
 	    
 	    private void verificarFinDeJuego() {
 	        if (pantallaActual == PANTALLA_PERDEDOR) {
 	        	inicializarJuego();   
 	        }
+	        if (puntos.getPuntaje() == 50) {
+	        	pantallaActual = PANTALLA_GANADOR;  
+	        }
 	    }
 	    
 		
-	    private void chequearColision(){ 
-	    	
-	    	//Si come honguitosbuenos
+	    private void chequearColisionHongosBuenos(){ 
 	    	if(viborita.getLargoCuerpito().get(0).equals(hongoBueno.getHongoBueno())) {
 	            hongoBueno.nuevoHonguitoBueno();
 	            viborita.crecerCola();
 	            puntos.sumarPunto();
 	            sonidos.tocarSonido("vida");
 	        }
+	    }
 	    	
-	    	//Si come honguitosMalos
+	    private void chequearColisionHongosMalos () {	
 	    	if(viborita.getLargoCuerpito().get(0).equals(hongoMalo.getHongoMalo())) {
 	    		pantallaActual = PANTALLA_PERDEDOR;
 	    		sonidos.tocarSonido("perdiste");
 	    	}
+	    }
 	        
-
+	    private void chequearColisionParedes () {	
 	        // Si traspasa la pared
 	        //NUESTRO CAMPO DE JUEGO ES DE 45*35
 	    	//Primer termino del if representa lado izquierdo || representa derecha
-	        if(viborita.getLargoCuerpito().get(0).x < 0 || viborita.getLargoCuerpito().get(0).x > 45 ||  
+	        if(viborita.getLargoCuerpito().get(0).x < 0 || viborita.getLargoCuerpito().get(0).x > 55 ||  
 	        		//tercer termino del if representa arriba || representa abajo
 	        		viborita.getLargoCuerpito().get(0).y < 0 || viborita.getLargoCuerpito().get(0).y > 35) {
 	        		pantallaActual = PANTALLA_PERDEDOR;
 	        		sonidos.tocarSonido("perdiste");
-	        		
-	        	
 	            }
-
-	        //COMPRUEBA SI LA POSICION DE LA CABEZA ES IGUAL A LA DEL CUERPO
+	    }
+	    
+	    private void chequearColisionConCuerpoViborita () {
 	        for(int i = 1; i < viborita.getLargoCuerpito().size(); i++) {
 	            if(viborita.getLargoCuerpito().get(0).equals(viborita.getLargoCuerpito().get(i)) && viborita.getLargoCuerpito().size() > 2) {
 	            	pantallaActual = PANTALLA_PERDEDOR;
 	            	sonidos.tocarSonido("perdiste");
-	            	
-	            	
 	            }
 	        }
 	    }
 	    
 	    
-	    public void chequearNivel() {
-	    	if (puntos.getPuntaje() > 10 && puntos.getPuntaje() <= 20 ) {
-	    		
-	    		
-	    	}
-	    	/*if(puntos.getPuntaje()>10 && puntos.getPuntaje()<=20) {
-	    		nivel.sumarNivel();
-				
-			} else if(puntos.getPuntaje()>20 && puntos.getPuntaje()<=30) {
-				nivel.sumarNivel();
-				
-			} else if (puntos.getPuntaje()>30 && puntos.getPuntaje()<=40) {
-				//nivel.sumarNivel();
-			}else if (puntos.getPuntaje()>40 && puntos.getPuntaje()<=50) {
-				//nivel.sumarNivel();
-			}if(puntos.getPuntaje()==50) {
-				//dibujar pantalla ganador
-			}*/
-
-	    }
 	    
-	    public void chequearPuntos() {
-	    	if (puntos.getPuntaje() > 10 && puntos.getPuntaje() <=20) {
+	    public void chequearPuntosyNiveles() {
+	    	if (puntos.getPuntaje() == 11 ) {
+	    		level= 2; 
+	    		nivel.sumarNivel(); 
+	    		agregarHongosMalos (); 
+	    		
+				
+	    	}else if (puntos.getPuntaje() == 22) {
+	    		level= 3;
+	    		hongoMalo.nuevoHonguitoMalo();
 	    		hongoMalo.nuevoHonguitoMalo();
 				hongoMalo.dibujarse(getGraphics());
-	    		
+				hongoMalo.dibujarse(getGraphics());
+
 	    	}
+	    }
+	    
+	    public void agregarHongosMalos () {
+	    	hongoMalo.nuevoHonguitoMalo();
+			hongoMalo.dibujarse(getGraphics());	
 	    }
 	    
 	
@@ -323,11 +308,9 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        }
 
 	        if (pantallaActual == PANTALLA_JUEGO) {
-
-			int tecla = e.getKeyCode();
-			   
-		   
-			switch (tecla){
+	        	int tecla = e.getKeyCode();
+			
+	        	switch (tecla){
 		    	case KeyEvent.VK_SPACE:
 		    		this.repaint();
 		        case KeyEvent.VK_UP:
@@ -348,6 +331,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		    	}
 	        }
 		}
+
 			
 
 		@Override

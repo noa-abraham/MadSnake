@@ -1,6 +1,7 @@
 package juegoViborita;
 
 import java.awt.Graphics;
+import java.util.stream.*;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -17,7 +18,8 @@ public class HongoBueno implements Dibujable  {
 	private Point hongoBueno;
     private BufferedImage img;
   
-   
+    private int posicionX = 34; 
+    private int posicionY = 23; 
 
 	public HongoBueno() {
 		this.random = new Random ();
@@ -33,15 +35,21 @@ public class HongoBueno implements Dibujable  {
 	}
 		
 	public void nuevoHonguitoBueno() {
-		hongoBueno.x = random.nextInt(39);
-		hongoBueno.y = random.nextInt(28) + 1;
-    }
+		hongoBueno.x = random.nextInt(posicionX); //(para q no tome 0)
+		hongoBueno.y = random.nextInt(posicionY);
+		if (hongoBueno.y <= 3) {
+			hongoBueno.y = 4;
+		}
+		if (hongoBueno.x <= 1) {
+			hongoBueno.x = 4; 
+		}
+   }
 
 	@Override
 	public void dibujarse(Graphics graphics) {
 		try {
 			
-			graphics.drawImage(img, hongoBueno.x*20, hongoBueno.y*20, 25, 25, null); 
+			graphics.drawImage(img, hongoBueno.x*20, hongoBueno.y*20, 20, 20, null); 
         } catch (Exception e1) {
             throw new RuntimeException(e1);
         }

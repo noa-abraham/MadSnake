@@ -20,6 +20,8 @@ public class Nivel implements Dibujable {
         this.nivel = 1;
     }
 
+    
+    @Override
     public void dibujarse(Graphics g) {
         g.setColor(color);
         g.setFont(font);
@@ -34,5 +36,6 @@ public class Nivel implements Dibujable {
     public int getNivel() {
         return nivel;
     }
+
 
 }

@@ -10,14 +10,14 @@ public class Puntos implements Dibujable {
     private int posicionY;
     private Font font;
     private Color color;
-    private int puntos = 0; 
+    private int puntos; 
 
     public Puntos (int posicionX, int posicionY, Font font, Color color) {
         this.posicionX = posicionX;
         this.posicionY = posicionY;
         this.font = font;
         this.color = color;
-        this.puntos = 0;
+        this.puntos = 0; 
     }
 
     public void dibujarse(Graphics g) {
@@ -26,9 +26,7 @@ public class Puntos implements Dibujable {
         g.drawString("Puntaje: " + String.valueOf(puntos), posicionX, posicionY);
     }
 
-
-
-    public void sumarPunto() {
+   public void sumarPunto() {
         puntos++;
     }
 

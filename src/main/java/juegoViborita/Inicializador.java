@@ -11,9 +11,9 @@ public class Inicializador  {
 
 	public static void main(String[] args) {
 		
-		int anchoVentana = 905;
+		int anchoVentana = 900;
 		int largoVentana = 700;
-		int tiempoDeEsperaEntreActualizaciones = 90;
+		int tiempoDeEsperaEntreActualizaciones = 120;
 
       
         System.setProperty("sun.java2d.opengl", "true");
@@ -21,7 +21,7 @@ public class Inicializador  {
      
         JFrame ventana = new JFrame("****M A D  // S N A K E**** ");
         
-        ventana.setBounds(10, 10,905,700); 
+        ventana.setBounds(10, 10,900,700); 
         ventana.setBackground(Color.black); 
         ventana.setResizable(false); 
         ventana.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
