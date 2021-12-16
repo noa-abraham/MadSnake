@@ -16,15 +16,17 @@ public class PantallaPerdedor extends Pantalla {
 	 public void dibujarse(Graphics graphics) {
 	        super.dibujarse(graphics);
 	        mostrarMensajePerdiste(graphics); 
+	        
 	 }
 	     
-	 
-	 private void mostrarMensajePerdiste(Graphics g) {
+
+	private void mostrarMensajePerdiste(Graphics g) {
 		 g.setColor(Color.yellow);
 		 g.setFont(new Font("Impact", Font.BOLD, 30));
-		 g.drawString("Presioná ESPACIO para iniciar",370,300);
+		 g.drawString("Presioná cualquier tecla para iniciar",370,300);
 	 }
 	 
+	
 		 
  }
 
