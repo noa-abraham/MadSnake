@@ -51,6 +51,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	public static int level = 1;
 	private Puntos puntos; 
 	private Sonidos sonidos;
+	 private Font font;
+	 private Color color;
 
 	
 	
@@ -73,7 +75,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			this.pantallaPerdedor = null;
 			this.nivel = new Nivel(100,47, new Font("Impact", Font.PLAIN, 20), Color.magenta);
 			this.puntos = new Puntos (700, 47, new Font("Impact", Font.PLAIN, 20), Color.magenta);
-			this.cabeceraTitulo = new CabeceraTitulo (851, 55, "imagenes/cabecera.png"); 
+			this.cabeceraTitulo = new CabeceraTitulo (851, 55, "imagenes/cabecera2.png"); 
 	        this.viborita = new Viborita(); 
 	        viborita.crecerCola();
 	        this.hongoBueno = new HongoBueno(); 
@@ -125,18 +127,53 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		 }
 		 
 		 private void dibujarEspacioDeJuego (Graphics g) {
-			 g.setColor(Color.yellow); //color rectangulo que enmarca cabeceraTitulo, arriba, a los puntos, niveles y vidas
-			 g.drawRect(24, 10 , 851, 55);
+			 //g.setColor(Color.yellow); //color rectangulo que enmarca cabeceraTitulo, arriba, a los puntos, niveles y vidas
+			 //g.drawRect(24, 10 , 851, 55);
 			 cabeceraTitulo.dibujarse(g); 
 			 g.setColor(Color.DARK_GRAY); //COLOR RELLENO DEL RECTANGULO DEL ESPAICO DE JUEGO
 			 g.fillRect(26, 75, 850, 575);
-			 g.setColor(Color.yellow);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
-			 g.drawRect(25, 68, 851, 577);
+			 //g.setColor(Color.yellow);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
+			 //g.drawRect(25, 68, 851, 577);
 	         viborita.dibujarse(g);
-	         nivel.dibujarse(g); 
+	         //nivel.dibujarse(g); 
 	         puntos.dibujarse(g);
+<<<<<<< HEAD
 	         hongoBueno.dibujarse(g); 
 	        
+=======
+	         hongoBueno.dibujarse(g);
+	         //hongoMalo.dibujarse(g);
+
+	         
+	         if (puntos.getPuntaje() >= 0 && puntos.getPuntaje() <=10 ) {
+	         g.setColor(color);
+	         g.setFont(font);
+	         g.drawString("Nivel: 1", 100, 47);
+	         }
+	         else if (puntos.getPuntaje() >= 10 && puntos.getPuntaje() <= 20) {
+	        	 g.setColor(color);
+		         g.setFont(font);
+		         g.drawString("Nivel: 2", 100, 47); 
+	         }
+	         else if (puntos.getPuntaje() >= 20 && puntos.getPuntaje() <= 30) {
+	        	 g.setColor(color);
+		         g.setFont(font);
+		         g.drawString("Nivel: 3", 100, 47); 
+	         }
+	         else if (puntos.getPuntaje() >= 30 && puntos.getPuntaje() <= 40) {
+	        	 g.setColor(color);
+		         g.setFont(font);
+		         g.drawString("Nivel: 4", 100, 47); 
+	         }
+	         else if (puntos.getPuntaje() >= 40 && puntos.getPuntaje() < 50) {
+	        	 g.setColor(color);
+		         g.setFont(font);
+		         g.drawString("Nivel: 5", 100, 47); 
+	         }
+	         else if (puntos.getPuntaje() == 50) {
+	        	 pantallaActual = PANTALLA_GANADOR;  
+	         }		 
+>>>>>>> branch 'master' of https://github.com/noa-abraham/MadSnake.git
 		 }
 		 
 
@@ -227,7 +264,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        		sonidos.tocarSonido("perdiste");
 	            }
 	    }
-	    
+	  
 	    private void chequearColisionConCuerpoViborita () {
 	        for(int i = 1; i < viborita.getLargoCuerpito().size(); i++) {
 	            if(viborita.getLargoCuerpito().get(0).equals(viborita.getLargoCuerpito().get(i)) && viborita.getLargoCuerpito().size() > 2) {

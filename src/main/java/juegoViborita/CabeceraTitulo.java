@@ -16,7 +16,7 @@ public class CabeceraTitulo extends Pantalla {
 	public CabeceraTitulo(int ancho, int largo, String resource) {
 		super(ancho, largo, resource);
 		try {
-			String path = Paths.get(Portada.class.getClassLoader().getResource("imagenes/cabecera.png").toURI()).toString();
+			String path = Paths.get(Portada.class.getClassLoader().getResource("imagenes/cabecera2.png").toURI()).toString();
 			this.img = ImageIO.read(new File(path));
 		} catch (IOException e) {
 			throw new RuntimeException(e);
