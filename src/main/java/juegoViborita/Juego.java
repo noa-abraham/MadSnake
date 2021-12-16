@@ -30,10 +30,9 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	public static int level = 1;
 	private Puntos puntos; 
 	private Sonidos sonidos;
-	private Font font;
-	private Color color;
+	
 
-		
+	
 	public Juego (int anchoJuego, int largoJuego, int tiempoDeEsperaEntreActualizaciones ) {
 		this.pantallaActual = PANTALLA_INICIO; //la que tiene la portada
 		this.anchoJuego = anchoJuego;
@@ -56,9 +55,11 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    this.hongoBueno = new HongoBueno(); 
         hongoBueno.nuevoHonguitoBueno(); 
         this.hongoMalo = new HongoMalo (); 
-	    hongoMalo.nuevoHonguitoMalo();
+	  //  hongoMalo.nuevoHonguitoMalo(); 
+	   
 	}
 
+	   
 	
 	@Override
 	public Dimension getPreferredSize() {
@@ -110,7 +111,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    nivel.dibujarse(g); 
 	    puntos.dibujarse(g);
 	    hongoBueno.dibujarse(g); 
-	  //hongoMalo.dibujarse(g);
+	    //hongoMalo.dibujarse(g);
 	}
 
 	private void actualizarJuego() {
@@ -200,17 +201,18 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	public void chequearPuntosyNiveles() {
 		if (puntos.getPuntaje() >= 0 && puntos.getPuntaje() <=10 ) {
 			level= 1; 
-			nivel.dibujarse(getGraphics());
-		} else if (puntos.getPuntaje() >= 10 && puntos.getPuntaje() <= 20) {
+			
+			
+		} else if (puntos.getPuntaje() >= 11 && puntos.getPuntaje() <= 20) {
 			level= 2;
 	    	nivel.dibujarse(getGraphics());
-		}else if (puntos.getPuntaje() >= 20 &&  puntos.getPuntaje() <= 30 ) {
+		}else if (puntos.getPuntaje() >= 21 &&  puntos.getPuntaje() <= 30 ) {
 			level= 3;
 			nivel.dibujarse(getGraphics());  		
-		}else if (puntos.getPuntaje() >= 30 &&  puntos.getPuntaje() <= 40 ) {
+		}else if (puntos.getPuntaje() >= 31 &&  puntos.getPuntaje() <= 40 ) {
 			level= 4;
 			nivel.dibujarse(getGraphics());; 
-		}else if (puntos.getPuntaje() >= 40 &&  puntos.getPuntaje() <= 50 ) {
+		}else if (puntos.getPuntaje() >= 41 &&  puntos.getPuntaje() <= 50 ) {
 			level= 5;
 			nivel.dibujarse(getGraphics());	
 		}else if (puntos.getPuntaje() == 50) {

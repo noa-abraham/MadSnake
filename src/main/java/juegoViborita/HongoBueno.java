@@ -1,7 +1,6 @@
 package juegoViborita;
 
 import java.awt.Graphics;
-import java.util.stream.*;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -43,7 +42,7 @@ public class HongoBueno implements Dibujable  {
 		if (hongoBueno.x <= 1) {
 			hongoBueno.x = 4; 
 		}
-   }
+	}
 
 	@Override
 	public void dibujarse(Graphics graphics) {

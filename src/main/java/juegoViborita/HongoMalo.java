@@ -29,7 +29,7 @@ public class HongoMalo implements Dibujable {
     		} catch (URISyntaxException e) {
     			e.printStackTrace();
     		}
-    	}
+    }
    
 
     public void nuevoHonguitoMalo() {
@@ -46,7 +46,7 @@ public class HongoMalo implements Dibujable {
 	@Override
     public void dibujarse(Graphics graphics) {
     	try {
-    		graphics.drawImage(img, hongoMalo.x*20, hongoMalo.y*20, 25, 25, null);
+    		graphics.drawImage(img, hongoMalo.x*20, hongoMalo.y*20, 20, 20, null);
         } catch (Exception e1) {
             throw new RuntimeException(e1);
         }

@@ -3,8 +3,6 @@ package juegoViborita;
 import java.awt.Color;
 
 
-//acá el profe pone hay colision y moverse. 
-
 public abstract class ElementoBasico implements Elemento {
 	
 	protected int posicionX;
@@ -30,7 +28,6 @@ public abstract class ElementoBasico implements Elemento {
 	public void setPosicionX(int posicionX) {
 		this.posicionX = posicionX;
 	}
-	
 	
 
 	public int getPosicionY() {
