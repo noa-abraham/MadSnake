@@ -98,8 +98,10 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	            }
 	            dibujarJuego();
 	            esperar(tiempoDeEsperaEntreActualizaciones);
-	        }
-	    }
+	         
+	            }
+	      }
+	   
 	       
 		
 		 protected void paintComponent(Graphics g) {
@@ -127,24 +129,17 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		 }
 		 
 		 private void dibujarEspacioDeJuego (Graphics g) {
-			 //g.setColor(Color.yellow); //color rectangulo que enmarca cabeceraTitulo, arriba, a los puntos, niveles y vidas
-			 //g.drawRect(24, 10 , 851, 55);
 			 cabeceraTitulo.dibujarse(g); 
-			 g.setColor(Color.DARK_GRAY); //COLOR RELLENO DEL RECTANGULO DEL ESPAICO DE JUEGO
+			 g.setColor(Color.DARK_GRAY); 
 			 g.fillRect(26, 75, 850, 575);
-			 //g.setColor(Color.yellow);//color BORDE RECTANGULO DEL ESPACIO DE JUEGO
-			 //g.drawRect(25, 68, 851, 577);
 	         viborita.dibujarse(g);
-	         //nivel.dibujarse(g); 
+	         nivel.dibujarse(g); 
 	         puntos.dibujarse(g);
-<<<<<<< HEAD
 	         hongoBueno.dibujarse(g); 
-	        
-=======
-	         hongoBueno.dibujarse(g);
 	         //hongoMalo.dibujarse(g);
+		 }
 
-	         
+	         /*
 	         if (puntos.getPuntaje() >= 0 && puntos.getPuntaje() <=10 ) {
 	         g.setColor(color);
 	         g.setFont(font);
@@ -154,11 +149,13 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        	 g.setColor(color);
 		         g.setFont(font);
 		         g.drawString("Nivel: 2", 100, 47); 
+		         agregarHongosMalos(g); 
 	         }
 	         else if (puntos.getPuntaje() >= 20 && puntos.getPuntaje() <= 30) {
 	        	 g.setColor(color);
 		         g.setFont(font);
 		         g.drawString("Nivel: 3", 100, 47); 
+		         
 	         }
 	         else if (puntos.getPuntaje() >= 30 && puntos.getPuntaje() <= 40) {
 	        	 g.setColor(color);
@@ -173,8 +170,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	         else if (puntos.getPuntaje() == 50) {
 	        	 pantallaActual = PANTALLA_GANADOR;  
 	         }		 
->>>>>>> branch 'master' of https://github.com/noa-abraham/MadSnake.git
 		 }
+		 */
 		 
 
 	    private void actualizarJuego() {
@@ -254,15 +251,11 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    }
 	        
 	    private void chequearColisionParedes () {	
-	        // Si traspasa la pared
-	        //NUESTRO CAMPO DE JUEGO ES DE 45*35
-	    	//Primer termino del if representa lado izquierdo || representa derecha
-	        if(viborita.getLargoCuerpito().get(0).x < 0 || viborita.getLargoCuerpito().get(0).x > 55 ||  
-	        		//tercer termino del if representa arriba || representa abajo
-	        		viborita.getLargoCuerpito().get(0).y < 0 || viborita.getLargoCuerpito().get(0).y > 35) {
+	        if(viborita.getLargoCuerpito().get(0).x < 0 || viborita.getLargoCuerpito().get(0).x > 45 ||  
+	        		viborita.getLargoCuerpito().get(0).y < 3 || viborita.getLargoCuerpito().get(0).y > 34) {
 	        		pantallaActual = PANTALLA_PERDEDOR;
 	        		sonidos.tocarSonido("perdiste");
-	            }
+	         }
 	    }
 	  
 	    private void chequearColisionConCuerpoViborita () {
@@ -274,31 +267,33 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        }
 	    }
 	   
+	    
 	    public void chequearPuntosyNiveles() {
-	    	if (puntos.getPuntaje()>= 0 && puntos.getPuntaje() <= 10 ) {
+	    	if (puntos.getPuntaje( )== 10 ) {
 	    		level= 1; 
-	    		nivel.getNivel(); 	
-	    	}else if (puntos.getPuntaje() >= 10 &&  puntos.getPuntaje() <= 20 ) {
-	    			nivel.getNivel(); 	
-	    			level= 2;
-	    	 
+	    		nivel.dibujarse(getGraphics());
+	    	}
+	    	if (puntos.getPuntaje() == 20 ) {
+	    		level= 2;
+	    		nivel.dibujarse(getGraphics());
+	    		
 	    	}else if (puntos.getPuntaje() >= 20 &&  puntos.getPuntaje() <= 30 ) {
-	    	
-	    		nivel.sumarNivel();
-	    		nivel.getNivel(); 
+	    		level= 3;
+	    		nivel.dibujarse(getGraphics());
 	    		
 	    	}else if (puntos.getPuntaje() >= 30 &&  puntos.getPuntaje() <= 40 ) {
-	    		nivel.sumarNivel();
-	    		nivel.getNivel(); 
+	    		level= 4;
+	    		nivel.dibujarse(getGraphics());; 
 	    		
 	    	}else if (puntos.getPuntaje() >= 40 &&  puntos.getPuntaje() <= 50 ) {
-	    		nivel.sumarNivel();
-	    		nivel.getNivel(); 
+	    		level= 5;
+	    		nivel.dibujarse(getGraphics());
 	    		
 	    	}else if (puntos.getPuntaje() == 50) {
 	    		pantallaActual = PANTALLA_GANADOR; 
 	    	}
 	    }
+	    
 	    
 	    	
 	    	

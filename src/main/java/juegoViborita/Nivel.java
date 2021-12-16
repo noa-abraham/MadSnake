@@ -25,15 +25,10 @@ public class Nivel implements Dibujable {
     public void dibujarse(Graphics g) {
         g.setColor(color);
         g.setFont(font);
-        g.drawString("Nivel: " + String.valueOf(nivel), posicionX, posicionY);
+        g.drawString("Nivel: " + Juego.level, posicionX, posicionY);
     }
     
-    public int sumarNivel () { 
-    	return nivel++;
-    	
-    }
-
-
+    
     public int getNivel() {
         return nivel;
     }
