@@ -135,9 +135,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	         viborita.dibujarse(g);
 	         nivel.dibujarse(g); 
 	         puntos.dibujarse(g);
-	         hongoBueno.dibujarse(g);
-	       //hongoMalo.dibujarse(g); 
-			 
+	         hongoBueno.dibujarse(g); 
+	        
 		 }
 		 
 
@@ -188,7 +187,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    	chequearPuntosyNiveles(); 
 	    	verificarFinDeJuego();
 	    }
-	        
+	    
+	    
 	    
 	    private void verificarFinDeJuego() {
 	        if (pantallaActual == PANTALLA_PERDEDOR) {
@@ -238,19 +238,33 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    }
 	   
 	    public void chequearPuntosyNiveles() {
-	    	if (puntos.getPuntaje() == 11 ) {
-	    		level= 2; 
-	    
-	    		//nivel.sumarNivel(); 
+	    	if (puntos.getPuntaje()>= 0 && puntos.getPuntaje() <= 10 ) {
+	    		level= 1; 
+	    		nivel.getNivel(); 	
+	    	}else if (puntos.getPuntaje() >= 10 &&  puntos.getPuntaje() <= 20 ) {
+	    			nivel.getNivel(); 	
+	    			level= 2;
+	    	 
+	    	}else if (puntos.getPuntaje() >= 20 &&  puntos.getPuntaje() <= 30 ) {
+	    	
+	    		nivel.sumarNivel();
+	    		nivel.getNivel(); 
 	    		
-				
-	    	}else if (puntos.getPuntaje() == 22) {
-	    		level= 3;
+	    	}else if (puntos.getPuntaje() >= 30 &&  puntos.getPuntaje() <= 40 ) {
+	    		nivel.sumarNivel();
+	    		nivel.getNivel(); 
 	    		
-
+	    	}else if (puntos.getPuntaje() >= 40 &&  puntos.getPuntaje() <= 50 ) {
+	    		nivel.sumarNivel();
+	    		nivel.getNivel(); 
+	    		
+	    	}else if (puntos.getPuntaje() == 50) {
+	    		pantallaActual = PANTALLA_GANADOR; 
 	    	}
 	    }
 	    
+	    	
+	    	
 	    public void agregarHongosMalos (Graphics g) {
 	    	hongoMalo.nuevoHonguitoMalo();
 			hongoMalo.dibujarse(g);	

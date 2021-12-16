@@ -28,8 +28,9 @@ public class Nivel implements Dibujable {
         g.drawString("Nivel: " + String.valueOf(nivel), posicionX, posicionY);
     }
     
-    public int sumarNivel () {
-    	return nivel++; 
+    public int sumarNivel () { 
+    	return nivel++;
+    	
     }
 
 
