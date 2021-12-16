@@ -36,8 +36,7 @@ public class Pantalla implements Dibujable {
 			graphics.drawImage(img, 0, 0, ancho, largo, null);
 		} catch (Exception e1) {
 			throw new RuntimeException(e1);
-		}
-		
+		}	
 	}
 
 }

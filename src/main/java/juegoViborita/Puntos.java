@@ -13,7 +13,7 @@ public class Puntos implements Dibujable {
     private int puntos; 
 
     public Puntos (int posicionX, int posicionY, Font font, Color color) {
-        this.posicionX = posicionX;
+    	this.posicionX = posicionX;
         this.posicionY = posicionY;
         this.font = font;
         this.color = color;
@@ -21,13 +21,13 @@ public class Puntos implements Dibujable {
     }
 
     public void dibujarse(Graphics g) {
-        g.setColor(color);
+    	g.setColor(color);
         g.setFont(font);
         g.drawString("Puntaje: " + String.valueOf(puntos), posicionX, posicionY);
     }
 
    public void sumarPunto() {
-        puntos++;
+	   puntos++;
     }
 
     public int getPuntaje() {

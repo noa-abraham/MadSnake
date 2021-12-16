@@ -21,12 +21,11 @@ public class Sonidos {
     }
 
     public void agregarSonido(String nombre, String archivo) {
-        try {
-            byte[] fileContent = Files
-                    .readAllBytes(Paths.get(Sonidos.class.getClassLoader().getResource(archivo).toURI()));
+    	try {
+    		byte[] fileContent = Files.readAllBytes(Paths.get(Sonidos.class.getClassLoader().getResource(archivo).toURI()));
             sonidos.put(nombre, fileContent);
         } catch (Exception e) {
-            e.printStackTrace();
+        	e.printStackTrace();
         }
     }
 
@@ -47,12 +46,12 @@ public class Sonidos {
             Clip clip = (Clip) AudioSystem.getLine(info);
             clip.open(ais);
             if (repetir) {
-                clip.loop(Clip.LOOP_CONTINUOUSLY);
+            	clip.loop(Clip.LOOP_CONTINUOUSLY);
             } else {
                 clip.start();
             }
         } catch (Exception e) {
-            e.printStackTrace();
+        	e.printStackTrace();
         }
     }
 }

@@ -1,6 +1,5 @@
 package juegoViborita;
 
-
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -9,13 +8,9 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.Random;
-
 import javax.imageio.ImageIO;
 
-
-
 public class HongoMalo implements Dibujable {
-	
 	private Random random;
     private Point hongoMalo;
     private BufferedImage img;
@@ -57,10 +52,9 @@ public class HongoMalo implements Dibujable {
         }
     }
 	
+	
     public Point getHongoMalo() {
         return hongoMalo;
     }
-
-    
 }
 	

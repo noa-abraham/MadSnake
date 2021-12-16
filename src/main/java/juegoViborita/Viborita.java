@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Viborita implements Dibujable  {
 	
-	private ArrayList<Point> largoCuerpito = new ArrayList<Point>(); //almacena puntos del cuerpo x,y
+	private ArrayList<Point> largoCuerpito = new ArrayList<Point>(); 
 	
 	private int posicionX = 0; 
 	private int posicionY = 0; 
@@ -33,15 +33,15 @@ public class Viborita implements Dibujable  {
 	
 	public void moverse () {
         for(int n = largoCuerpito.size()-1; n > 0; n--) {
-            largoCuerpito.get(n).setLocation(largoCuerpito.get(n-1));
+        	largoCuerpito.get(n).setLocation(largoCuerpito.get(n-1));
         }
         largoCuerpito.get(0).x += posicionX;
         largoCuerpito.get(0).y += posicionY;
     }
     
     public void crecerCola () {
-            largoCuerpito.add(new Point()); //agrega un nuevo punto
-        }
+    	largoCuerpito.add(new Point()); 
+    }
     
   
     public void direccion(String sentidoDireccion) {
@@ -62,15 +62,10 @@ public class Viborita implements Dibujable  {
                 posicionX = 1;
                 posicionY = 0;
                 break;
-            
         }
     }
-    
- 
-
-   
+      
 	public ArrayList<Point> getLargoCuerpito() {
 		return largoCuerpito;
-	}
-	
+	}	
 }

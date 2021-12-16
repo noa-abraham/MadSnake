@@ -24,6 +24,7 @@ public class CabeceraTitulo extends Pantalla {
 			e.printStackTrace();
 		}
 	}
+	
 	public void dibujarse(Graphics graphics) {
 		try {
 			graphics.drawImage(img, 25, 11, 850, 55, null);
@@ -31,6 +32,4 @@ public class CabeceraTitulo extends Pantalla {
 			throw new RuntimeException(e1);
 		}
 	}
-	
-
 }

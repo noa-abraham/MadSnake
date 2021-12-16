@@ -32,6 +32,4 @@ public class Nivel implements Dibujable {
     public int getNivel() {
         return nivel;
     }
-
-
 }
