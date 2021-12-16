@@ -20,7 +20,6 @@ public class Viborita implements Dibujable  {
 		largoCuerpito.add(new Point (20,10)); //15 es el centro de la pantalla //podria recibir largo y ancho de pantalla y dividir x 2 cada uno
 	}
 
-
 	@Override
 	public void dibujarse(Graphics g) {
 		for(int n = 0; n < largoCuerpito.size(); n++) {

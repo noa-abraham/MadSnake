@@ -1,7 +1,6 @@
 package juegoViborita;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Point;
 import java.util.Random;
 
@@ -16,7 +15,6 @@ public abstract class Alimento extends ElementoBasico   {
 		this.random = new Random (); 
 		this.alimento = new Point (); 
 	}
-	
 	
 	public abstract void nuevoAlimento (); 
 	
