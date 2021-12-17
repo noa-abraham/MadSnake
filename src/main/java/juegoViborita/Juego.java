@@ -215,13 +215,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			pantallaActual = PANTALLA_GANADOR; 
 		}
 	}
-	      	
-	public void agregarHongosMalos (Graphics g) {
-		hongoMalo.nuevoHonguitoMalo();
-		hongoMalo.dibujarse(g);	
-	}
-	    
-	
+
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if (pantallaActual == PANTALLA_INICIO) {
