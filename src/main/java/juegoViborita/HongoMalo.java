@@ -11,7 +11,6 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class HongoMalo implements Dibujable {
-	
 	private Random random;
     private Point hongoMalo;
     private BufferedImage img;
@@ -58,4 +57,4 @@ public class HongoMalo implements Dibujable {
         return hongoMalo;
     }
 }
-	
+
