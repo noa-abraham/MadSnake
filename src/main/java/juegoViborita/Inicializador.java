@@ -15,7 +15,6 @@ public class Inicializador  {
 		int largoVentana = 700;
 		int tiempoDeEsperaEntreActualizaciones = 120;
 
- 
         System.setProperty("sun.java2d.opengl", "true");
         JFrame ventana = new JFrame("MAD SNAKE");
         ventana.setBounds(10, 10,900,700); 
@@ -24,7 +23,7 @@ public class Inicializador  {
         ventana.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
-        Juego juego = new Juego (anchoVentana, largoVentana, tiempoDeEsperaEntreActualizaciones ); 
+        Juego juego = new Juego (anchoVentana, largoVentana, tiempoDeEsperaEntreActualizaciones); 
         juego.setFocusable(true); 
         juego.setFocusTraversalKeysEnabled(false); 
         ventana.add(juego);

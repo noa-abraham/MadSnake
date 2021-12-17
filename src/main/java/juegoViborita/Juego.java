@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
 import javax.swing.JPanel;
 
 
@@ -24,16 +25,15 @@ public class Juego extends JPanel implements KeyListener, Runnable {
     private int pantallaActual;
 	private PantallaIlustrada portada;
 	private PantallaIlustrada pantallaGanador;
-	private PantallaPerdedor pantallaPerdedor;
+	private PantallaIlustrada pantallaPerdedor;
 	private CabeceraJuego cabeceraJuego; 
 	private Nivel nivel; 
 	public static int level = 1;
 	private Puntaje puntaje; 
 	private Sonidos sonidos; 
-	private int contadorColisiones = 0; 
+ 
 	
-	
-	public Juego (int anchoJuego, int largoJuego, int tiempoDeEsperaEntreActualizaciones ) {
+	public Juego (int anchoJuego, int largoJuego, int tiempoDeEsperaEntreActualizaciones) {
 		this.pantallaActual = PANTALLA_INICIO; 
 		this.anchoJuego = anchoJuego;
 		this.largoJuego = largoJuego;
@@ -55,10 +55,8 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    this.hongoBueno = new HongoBueno(); 
         hongoBueno.nuevoHonguitoBueno(); 
         this.hongoMalo = new HongoMalo (); 
-	    hongoMalo.nuevoHonguitoMalo();  
-	   
+	    hongoMalo.nuevoHonguitoMalo();   
 	}
-
 	
 	@Override
 	public Dimension getPreferredSize() {
@@ -85,7 +83,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		}
 		if (pantallaActual == PANTALLA_PERDEDOR) {
 			if (this.pantallaPerdedor == null) {
-				this.pantallaPerdedor = new PantallaPerdedor(anchoJuego, largoJuego, "imagenes/perdiste.png", puntaje.getPuntaje());
+				this.pantallaPerdedor = new PantallaIlustrada(anchoJuego, largoJuego, "imagenes/perdiste.png");
 			}
 			pantallaPerdedor.dibujarse(g);
 		}
@@ -157,9 +155,10 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	}
 	
 	private void aumentarDificultad () {
-		if (level == 2) {
+		if (level == 1) {
+			tiempoDeEsperaEntreActualizaciones = 120;
+		}else if (level == 2) {
 			tiempoDeEsperaEntreActualizaciones = 90;
-			
 		}else if (level == 3) {
 			tiempoDeEsperaEntreActualizaciones = 70; 
 		}else if (level >= 4) {	
@@ -184,7 +183,6 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			hongoMalo.nuevoHonguitoMalo();
 			viborita.crecerCola();
 			puntaje.sumarPunto();
-			contadorColisiones++; 
 			sonidos.tocarSonido("vida");
 		}
 	}
@@ -232,6 +230,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			pantallaActual = PANTALLA_GANADOR; 
 		}
 	}
+	
 
 	@Override
 	public void keyPressed(KeyEvent e) {
