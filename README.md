@@ -13,6 +13,6 @@ Alumnos: - Noelia Abraham
          
          
 ![portada](https://user-images.githubusercontent.com/82983554/146477360-437844a0-255f-4225-a2d2-d33b803a73ea.png)
-![asdasd](https://user-images.githubusercontent.com/82983554/146477534-ff4cbd5f-3641-4f52-8173-f572b39410fb.JPG)
+![asdasd](https://user-images.githubusercontent.com/82983554/146483678-a8486814-5cf9-48c1-b58b-7f015e5b32b2.JPG)
 
 
