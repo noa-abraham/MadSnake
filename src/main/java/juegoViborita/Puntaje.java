@@ -10,7 +10,7 @@ public class Puntaje implements Dibujable {
     private int posicionY;
     private Font font;
     private Color color;
-    private int puntaje; 
+    int puntaje = 0; 
 
     public Puntaje (int posicionX, int posicionY, Font font, Color color) {
     	this.posicionX = posicionX;

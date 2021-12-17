@@ -6,7 +6,7 @@ import java.awt.Graphics;
 
 public class PantallaPerdedor extends PantallaIlustrada {
 	
-	private int puntaje; 
+	int puntaje;  
 
 	public PantallaPerdedor(int ancho, int largo,String resource, int puntaje) {
 		super(ancho, largo, resource);
@@ -16,7 +16,7 @@ public class PantallaPerdedor extends PantallaIlustrada {
 	public void dibujarse(Graphics graphics) {
         super.dibujarse(graphics);
         String mensajePuntos = " punto";
-        if (puntaje >= 1) {
+        if (puntaje  >= 1) {
             mensajePuntos += "s";
         }
         mostrarMensaje(graphics, "Obtuviste: " + puntaje + mensajePuntos);

@@ -24,17 +24,17 @@ public class HongoBueno implements Dibujable  {
 		this.random = new Random ();
 		this.hongoBueno = new Point (); 
 		try {
-		String path = Paths.get(HongoBueno.class.getClassLoader().getResource("imagenes/hongoVioleta.gif").toURI()).toString();
-		this.img = ImageIO.read(new File(path));
+			String path = Paths.get(HongoBueno.class.getClassLoader().getResource("imagenes/hongoVioleta.gif").toURI()).toString();
+			this.img = ImageIO.read(new File(path));
 		} catch (IOException e) {
-		throw new RuntimeException(e);
+			throw new RuntimeException(e);
 		} catch (URISyntaxException e) {
-		e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 		
 	public void nuevoHonguitoBueno() {
-		hongoBueno.x = random.nextInt(posicionX); //(para q no tome 0)
+		hongoBueno.x = random.nextInt(posicionX); 
 		hongoBueno.y = random.nextInt(posicionY);
 		if (hongoBueno.y <= 3) {
 			hongoBueno.y = 4;
@@ -47,13 +47,11 @@ public class HongoBueno implements Dibujable  {
 	@Override
 	public void dibujarse(Graphics graphics) {
 		try {
-			
 			graphics.drawImage(img, hongoBueno.x*20, hongoBueno.y*20, 20, 20, null); 
         } catch (Exception e1) {
-            throw new RuntimeException(e1);
+        	throw new RuntimeException(e1);
         }
 	}
-
 
 	public Point getHongoBueno() {
 		return hongoBueno;  

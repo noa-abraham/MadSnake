@@ -55,7 +55,6 @@ public class Juego extends JPanel implements KeyListener, Runnable {
         hongoBueno.nuevoHonguitoBueno(); 
         this.hongoMalo = new HongoMalo (); 
 	    hongoMalo.nuevoHonguitoMalo();  
-	   
 	}
 
 	
