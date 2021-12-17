@@ -84,7 +84,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		}
 		if (pantallaActual == PANTALLA_PERDEDOR) {
 			if (this.pantallaPerdedor == null) {
-				this.pantallaPerdedor = new PantallaPerdedor(anchoJuego, largoJuego, "imagenes/perdiste.png", puntaje.getPuntaje());
+				this.pantallaPerdedor = new PantallaPerdedor(anchoJuego, largoJuego, "imagenes/perdiste.png", this.puntaje.getPuntaje());
 			}
 			pantallaPerdedor.dibujarse(g);
 		}
