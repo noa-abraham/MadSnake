@@ -191,7 +191,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 
 	private void chequearColisionParedes() {
 		if (viborita.getLargoCuerpito().get(0).x < 0 || viborita.getLargoCuerpito().get(0).x > 45
-				|| viborita.getLargoCuerpito().get(0).y < 3 || viborita.getLargoCuerpito().get(0).y > 34) {
+				|| viborita.getLargoCuerpito().get(0).y < 4 || viborita.getLargoCuerpito().get(0).y > 34) {
 			pantallaActual = PANTALLA_PERDEDOR;
 			sonidos.tocarSonido("perdiste");
 		}
