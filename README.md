@@ -1,5 +1,12 @@
 # MadSnake
-Proyecto Final- Paradigmas de programación-IFTS N° 16-Prof. Juan Pablo Converso
+Proyecto Final- Paradigmas de Programación-IFTS N° 16-Prof. Juan Pablo Converso
+Año: 2021
+
+Presentamos un cover del clásico Snake!
+No se pueden atravezar las paredes, si la serpiete se toca la cola muere y, además de los hongos buenos que hacen crecer a la Viborita, están los hongos azules 
+que la llevan directo a la muerte!
+
+El juego tiene 5 niveles, si llegás a los 50 puntos, es porque la Viborita sobrevivió a los hongos azules, a chocarse con las paredes y a sí misma!
 
 Alumnos: - Noelia Abraham
          - Alan Gimelstein
