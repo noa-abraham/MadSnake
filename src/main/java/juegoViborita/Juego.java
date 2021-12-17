@@ -55,6 +55,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
         hongoBueno.nuevoHonguitoBueno(); 
         this.hongoMalo = new HongoMalo (); 
 	    hongoMalo.nuevoHonguitoMalo();  
+	   
 	}
 
 	
@@ -83,7 +84,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		}
 		if (pantallaActual == PANTALLA_PERDEDOR) {
 			if (this.pantallaPerdedor == null) {
-				this.pantallaPerdedor = new PantallaPerdedor(anchoJuego, largoJuego, "imagenes/perdiste.png", this.puntaje.getPuntaje());
+				this.pantallaPerdedor = new PantallaPerdedor(anchoJuego, largoJuego, "imagenes/perdiste.png", puntaje.getPuntaje());
 			}
 			pantallaPerdedor.dibujarse(g);
 		}
@@ -155,6 +156,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
   
 	private void verificarFinDeJuego() {
 		if (pantallaActual == PANTALLA_PERDEDOR) {
+			sonidos.pararSonido("background");
 			inicializarJuego();   
 		}
 		if (puntaje.getPuntaje() == 50) {
@@ -220,6 +222,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	public void keyPressed(KeyEvent e) {
 		if (pantallaActual == PANTALLA_INICIO) {
 			inicializarJuego();
+			this.sonidos.repetirSonido("background");
 			pantallaActual = PANTALLA_JUEGO;
 		}
 		if (pantallaActual == PANTALLA_PERDEDOR || pantallaActual == PANTALLA_GANADOR) {
