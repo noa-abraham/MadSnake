@@ -5,5 +5,7 @@ Alumnos: - Noelia Abraham
          - Alan Gimelstein
          
          
-![portada](https://user-images.githubusercontent.com/82983554/146471609-e1a0ab21-be9f-475b-8d5a-fbb9e9a59723.png)
+![portada](https://user-images.githubusercontent.com/82983554/146477360-437844a0-255f-4225-a2d2-d33b803a73ea.png)
+![asdasd](https://user-images.githubusercontent.com/82983554/146477534-ff4cbd5f-3641-4f52-8173-f572b39410fb.JPG)
+
 
