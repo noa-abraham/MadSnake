@@ -31,6 +31,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	public static int level = 1;
 	private Puntaje puntaje; 
 	private Sonidos sonidos; 
+	private boolean teclaApretada = false;
  
 	
 	public Juego (int anchoJuego, int largoJuego, int tiempoDeEsperaEntreActualizaciones) {
@@ -259,11 +260,13 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		        case KeyEvent.VK_RIGHT:
 		        	viborita.direccion("DER");
 		            break;
-		        case KeyEvent.VK_E:
+		        case KeyEvent.VK_E: 
 		            System.exit(0);
 		    	}
 	        }
 		}
+	
+
 
 		@Override
 		public void keyReleased(KeyEvent e) {
