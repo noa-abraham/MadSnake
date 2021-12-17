@@ -4,34 +4,34 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-public class Puntos implements Dibujable {
+public class Puntaje implements Dibujable {
 
     private int posicionX;
     private int posicionY;
     private Font font;
     private Color color;
-    private int puntos; 
+    private int puntaje; 
 
-    public Puntos (int posicionX, int posicionY, Font font, Color color) {
+    public Puntaje (int posicionX, int posicionY, Font font, Color color) {
     	this.posicionX = posicionX;
         this.posicionY = posicionY;
         this.font = font;
         this.color = color;
-        this.puntos = 0; 
+        this.puntaje = 0; 
     }
 
     public void dibujarse(Graphics g) {
     	g.setColor(color);
         g.setFont(font);
-        g.drawString("Puntaje: " + String.valueOf(puntos), posicionX, posicionY);
+        g.drawString("Puntaje: " + String.valueOf(puntaje), posicionX, posicionY);
     }
 
    public void sumarPunto() {
-	   puntos++;
+	   puntaje++;
     }
 
     public int getPuntaje() {
-        return puntos;
+        return puntaje;
     }
     
 }

@@ -24,8 +24,8 @@ public class PantallaPerdedor extends PantallaIlustrada {
 
     private void mostrarMensaje(Graphics g, String mensaje) {
         g.setColor(Color.blue);
-        g.setFont(new Font("Impact", 370, 300));
-        g.drawString(mensaje, 10, 40);
+        g.setFont(new Font("Impact", 8, 30));
+        g.drawString(mensaje, 370, 300);
     }
 	 		 
  }
