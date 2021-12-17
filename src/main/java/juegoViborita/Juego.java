@@ -25,7 +25,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	private PantallaIlustrada portada;
 	private PantallaIlustrada pantallaGanador;
 	private PantallaPerdedor pantallaPerdedor;
-	private CabeceraTitulo cabeceraTitulo; 
+	private CabeceraJuego cabeceraJuego; 
 	private Nivel nivel; 
 	public static int level = 1;
 	private Puntaje puntaje; 
@@ -48,7 +48,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		this.pantallaPerdedor = null;
 		this.nivel = new Nivel(100,47, new Font("Impact", Font.PLAIN, 20), Color.magenta);
 		this.puntaje = new Puntaje (700, 47, new Font("Impact",Font.PLAIN, 20), Color.magenta);
-		this.cabeceraTitulo = new CabeceraTitulo (851, 55, "imagenes/cabecera3.png"); 
+		this.cabeceraJuego = new CabeceraJuego (851, 55, "imagenes/cabecera3.png"); 
         this.viborita = new Viborita(); 
         viborita.crecerCola();
 	    this.hongoBueno = new HongoBueno(); 
@@ -102,7 +102,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	}
 		 
 	private void dibujarEspacioDeJuego (Graphics g) {
-		cabeceraTitulo.dibujarse(g); 
+		cabeceraJuego.dibujarse(g); 
 		g.setColor(Color.DARK_GRAY); 
 		g.fillRect(26, 75, 850, 575);
 		viborita.dibujarse(g);
