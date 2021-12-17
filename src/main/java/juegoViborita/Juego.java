@@ -266,8 +266,6 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	        }
 		}
 	
-
-
 		@Override
 		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
