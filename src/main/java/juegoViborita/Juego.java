@@ -22,44 +22,42 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	private HongoBueno hongoBueno; 
 	private HongoMalo hongoMalo; 
     private int pantallaActual;
-	private Pantalla portada;
-	private Pantalla pantallaGanador;
+	private PantallaIlustrada portada;
+	private PantallaIlustrada pantallaGanador;
 	private PantallaPerdedor pantallaPerdedor;
-	private Pantalla cabeceraTitulo; 
+	private CabeceraTitulo cabeceraTitulo; 
 	private Nivel nivel; 
 	public static int level = 1;
 	private Puntos puntos; 
-	private Sonidos sonidos;
+	private Sonidos sonidos; 
 	
-
 	
 	public Juego (int anchoJuego, int largoJuego, int tiempoDeEsperaEntreActualizaciones ) {
-		this.pantallaActual = PANTALLA_INICIO; //la que tiene la portada
+		this.pantallaActual = PANTALLA_INICIO; 
 		this.anchoJuego = anchoJuego;
 		this.largoJuego = largoJuego;
 		this.tiempoDeEsperaEntreActualizaciones = tiempoDeEsperaEntreActualizaciones;
-		this.portada = new Pantalla(anchoJuego, largoJuego, "imagenes/portada.png"); //aparece portada
-		this.pantallaGanador = new Pantalla(anchoJuego, largoJuego, "imagenes/ganaste.png"); 
+		this.portada = new PantallaIlustrada(anchoJuego, largoJuego, "imagenes/portada.png"); 
+		this.pantallaGanador = new PantallaIlustrada(anchoJuego, largoJuego, "imagenes/ganaste.png"); 
 	    cargarSonidos();
 	    this.sonidos.repetirSonido("juego");
-	    inicializarJuego (); //para cuando inicia el juego como pára cuyando perdes
+	    inicializarJuego (); 
 	}
 
 	private void inicializarJuego() {
 		this.pantallaPerdedor = null;
 		this.nivel = new Nivel(100,47, new Font("Impact", Font.PLAIN, 20), Color.magenta);
-		this.puntos = new Puntos (700, 47, new Font("Impact", Font.PLAIN, 20), Color.magenta);
-		this.cabeceraTitulo = new CabeceraTitulo (851, 55, "imagenes/cabecera2.png"); 
+		this.puntos = new Puntos (700, 47, new Font("Impact",Font.PLAIN, 20), Color.magenta);
+		this.cabeceraTitulo = new CabeceraTitulo (851, 55, "imagenes/cabecera3.png"); 
         this.viborita = new Viborita(); 
         viborita.crecerCola();
 	    this.hongoBueno = new HongoBueno(); 
         hongoBueno.nuevoHonguitoBueno(); 
         this.hongoMalo = new HongoMalo (); 
-	  //  hongoMalo.nuevoHonguitoMalo(); 
+	    hongoMalo.nuevoHonguitoMalo();  
 	   
 	}
 
-	   
 	
 	@Override
 	public Dimension getPreferredSize() {
@@ -86,7 +84,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		}
 		if (pantallaActual == PANTALLA_PERDEDOR) {
 			if (this.pantallaPerdedor == null) {
-				this.pantallaPerdedor = new PantallaPerdedor(anchoJuego, largoJuego, "imagenes/perdiste.png", puntos.getPuntaje());
+				this.pantallaPerdedor = new PantallaPerdedor(anchoJuego, largoJuego, "imagenes/perdiste.png", this.puntos.getPuntaje());
 			}
 			pantallaPerdedor.dibujarse(g);
 		}
@@ -111,7 +109,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	    nivel.dibujarse(g); 
 	    puntos.dibujarse(g);
 	    hongoBueno.dibujarse(g); 
-	    //hongoMalo.dibujarse(g);
+	    hongoMalo.dibujarse(g);
 	}
 
 	private void actualizarJuego() {
@@ -132,12 +130,12 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	}
 
 	private void limpiarPantalla(Graphics graphics) {
-		graphics.setColor(Color.DARK_GRAY); //COLOR RELLENO DEL RECTANGULO DEL ESPAICO DE JUEGO
+		graphics.setColor(Color.DARK_GRAY); 
 		graphics.fillRect(0, 0, anchoJuego, largoJuego);
 	}
 	    
 	private void dibujarJuego() {
-		this.repaint(); //va a llamar a paint component
+		this.repaint(); 
 	}
 	       
 	private void esperar(int milisegundos) {
@@ -168,6 +166,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	private void chequearColisionHongosBuenos(){ 
 		if(viborita.getLargoCuerpito().get(0).equals(hongoBueno.getHongoBueno())) {
 			hongoBueno.nuevoHonguitoBueno();
+			hongoMalo.nuevoHonguitoMalo();
 			viborita.crecerCola();
 			puntos.sumarPunto();
 			sonidos.tocarSonido("vida");
@@ -201,8 +200,6 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	public void chequearPuntosyNiveles() {
 		if (puntos.getPuntaje() >= 0 && puntos.getPuntaje() <=10 ) {
 			level= 1; 
-			
-			
 		} else if (puntos.getPuntaje() >= 11 && puntos.getPuntaje() <= 20) {
 			level= 2;
 	    	nivel.dibujarse(getGraphics());
