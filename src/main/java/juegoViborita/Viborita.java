@@ -8,13 +8,12 @@ import java.util.ArrayList;
 
 public class Viborita implements Dibujable  {
 	
-	private ArrayList<Point> largoCuerpito = new ArrayList<Point>(); 
+	private ArrayList<Point> largoCuerpito= new ArrayList<Point>(); 
 	
 	private int posicionX = 0; 
 	private int posicionY = 0; 
 	private int anchoViborita= 20; 
 	private int largoViborita = 20; 
-	
 
 	public Viborita() {
 		largoCuerpito.add(new Point (20,10)); //15 es el centro de la pantalla //podria recibir largo y ancho de pantalla y dividir x 2 cada uno
@@ -26,7 +25,7 @@ public class Viborita implements Dibujable  {
             g.setColor(Color.MAGENTA);
             Point puntoDelCuerpito = largoCuerpito.get(n);
             g.fillRect(puntoDelCuerpito.x*20, puntoDelCuerpito.y*20, anchoViborita, largoViborita); 
-        }
+		}
 	
 	}
 	

@@ -30,6 +30,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	public static int level = 1;
 	private Puntaje puntaje; 
 	private Sonidos sonidos; 
+	private int contadorColisiones = 0; 
 	
 	
 	public Juego (int anchoJuego, int largoJuego, int tiempoDeEsperaEntreActualizaciones ) {
@@ -114,6 +115,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 
 	private void actualizarJuego() {
 		verificarEstadoAmbiente();
+		aumentarDificultad(); 
 		viborita.moverse();
 	}
 	    
@@ -148,12 +150,24 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	private void verificarEstadoAmbiente() {
 		chequearColisionHongosBuenos();
 		chequearColisionHongosMalos(); 
-		chequearColisionParedes ();
+		chequearColisionParedes();
 		chequearColisionConCuerpoViborita();
 		chequearPuntosyNiveles(); 
 		verificarFinDeJuego();
 	}
-  
+	
+	private void aumentarDificultad () {
+		if (level == 2) {
+			tiempoDeEsperaEntreActualizaciones = 90;
+			
+		}else if (level == 3) {
+			tiempoDeEsperaEntreActualizaciones = 70; 
+		}else if (level >= 4) {	
+			hongoMalo.nuevoHonguitoMalo();
+			tiempoDeEsperaEntreActualizaciones = 50; 
+		}
+	}
+
 	private void verificarFinDeJuego() {
 		if (pantallaActual == PANTALLA_PERDEDOR) {
 			sonidos.pararSonido("background");
@@ -170,6 +184,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 			hongoMalo.nuevoHonguitoMalo();
 			viborita.crecerCola();
 			puntaje.sumarPunto();
+			contadorColisiones++; 
 			sonidos.tocarSonido("vida");
 		}
 	}
@@ -200,7 +215,7 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 	   
 	public void chequearPuntosyNiveles() {
 		if (puntaje.getPuntaje() >= 0 && puntaje.getPuntaje() <=10 ) {
-			level= 1; 
+			level= 1;
 		} else if (puntaje.getPuntaje() >= 11 && puntaje.getPuntaje() <= 20) {
 			level= 2;
 	    	nivel.dibujarse(getGraphics());
