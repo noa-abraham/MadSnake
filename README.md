@@ -1,9 +1,10 @@
 # MadSnake
+100% Desarrollado en Java-POO
 Proyecto Final- Paradigmas de Programación-IFTS N° 16-Prof. Juan Pablo Converso
 Año: 2021
 
 Presentamos un cover del clásico Snake!
-No se pueden atravezar las paredes, si la serpiete se toca la cola muere y, además de los hongos buenos que hacen crecer a la Viborita, están los hongos azules 
+No se pueden atravezar las paredes, si la serpiete se toca la cola muere y además de los hongos buenos, que hacen crecer a la Viborita, están los hongos azules 
 que la llevan directo a la muerte!
 
 El juego tiene 5 niveles, en cada nivel la viborita va más rápido. En el cuarto nivel los hongos azules se vuelven locos, no te matan pero ojo! no te confundas. 
