@@ -13,16 +13,16 @@ import javax.swing.JPanel;
 public class Juego extends JPanel implements KeyListener, Runnable {
 	private static final long serialVersionUID = 1L;
 	private final static int PANTALLA_INICIO = 1;
-    private final static int PANTALLA_JUEGO = 2;
-    private final static int PANTALLA_PERDEDOR = 3;
-    private final static int PANTALLA_GANADOR = 4;
+    	private final static int PANTALLA_JUEGO = 2;
+  	private final static int PANTALLA_PERDEDOR = 3;
+        private final static int PANTALLA_GANADOR = 4;
 	private int anchoJuego;
 	private int largoJuego;
 	private int tiempoDeEsperaEntreActualizaciones; 
 	private Viborita viborita;
 	private HongoBueno hongoBueno; 
 	private HongoMalo hongoMalo; 
-    private int pantallaActual;
+        private int pantallaActual;
 	private PantallaIlustrada portada;
 	private PantallaIlustrada pantallaGanador;
 	private PantallaIlustrada pantallaPerdedor;
@@ -262,17 +262,17 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		            break;
 		        case KeyEvent.VK_E: 
 		            System.exit(0);
-		    	}
-	        }
 		}
+	     }
+	}
 	
-		@Override
-		public void keyReleased(KeyEvent e) {
-			// TODO Auto-generated method stub
-		}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+	}
 		
-		@Override
-		public void keyTyped(KeyEvent e) {
-			// TODO Auto-generated method stub
-		}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+	}
 }
