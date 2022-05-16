@@ -41,9 +41,9 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		this.tiempoDeEsperaEntreActualizaciones = tiempoDeEsperaEntreActualizaciones;
 		this.portada = new PantallaIlustrada(anchoJuego, largoJuego, "imagenes/portada.png"); 
 		this.pantallaGanador = new PantallaIlustrada(anchoJuego, largoJuego, "imagenes/ganaste.png"); 
-	    cargarSonidos();
-	    this.sonidos.repetirSonido("background");
-	    inicializarJuego (); 
+	    	cargarSonidos();
+	    	this.sonidos.repetirSonido("background");
+	    	inicializarJuego (); 
 	}
 
 	private void inicializarJuego() {
@@ -51,12 +51,12 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		this.nivel = new Nivel(100,47, new Font("Impact", Font.PLAIN, 20), Color.magenta);
 		this.puntaje = new Puntaje (700, 47, new Font("Impact",Font.PLAIN, 20), Color.magenta);
 		this.cabeceraJuego = new CabeceraJuego (851, 55, "imagenes/cabecera3.png"); 
-        this.viborita = new Viborita(); 
-        viborita.crecerCola();
-	    this.hongoBueno = new HongoBueno(); 
-        hongoBueno.nuevoHonguitoBueno(); 
-        this.hongoMalo = new HongoMalo (); 
-	    hongoMalo.nuevoHonguitoMalo();   
+       		this.viborita = new Viborita(); 
+        	viborita.crecerCola();
+	    	this.hongoBueno = new HongoBueno(); 
+       		hongoBueno.nuevoHonguitoBueno(); 
+        	this.hongoMalo = new HongoMalo (); 
+	    	hongoMalo.nuevoHonguitoMalo();   
 	}
 	
 	@Override
@@ -106,10 +106,10 @@ public class Juego extends JPanel implements KeyListener, Runnable {
 		g.setColor(Color.DARK_GRAY); 
 		g.fillRect(26, 75, 850, 575);
 		viborita.dibujarse(g);
-	    nivel.dibujarse(g); 
-	    puntaje.dibujarse(g);
-	    hongoBueno.dibujarse(g); 
-	    hongoMalo.dibujarse(g);
+	    	nivel.dibujarse(g); 
+	    	puntaje.dibujarse(g);
+	    	hongoBueno.dibujarse(g); 
+	    	hongoMalo.dibujarse(g);
 	}
 
 	private void actualizarJuego() {
