@@ -12,12 +12,12 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 public class HongoBueno implements Dibujable  {
-	
+
 	private Random random;
 	private Point hongoBueno;
-    private BufferedImage img;
-    private int posicionX = 34; 
-    private int posicionY = 23; 
+    	private BufferedImage img;
+    	private int posicionX = 34; 
+    	private int posicionY = 23; 
 
 	public HongoBueno() {
 		this.random = new Random ();
